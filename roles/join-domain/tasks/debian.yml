@@ -1,0 +1,119 @@
+---
+
+
+- name: debian | Add apt key
+  apt_key:
+    url: "{{apt_key}}"
+    state: present
+
+- name: debian | Adding PowerBroker Identity Service repo
+  get_url:
+    url: "{{pbis_apt_repo}}"
+    dest: "/etc/apt/sources.list.d/pbiso.list"
+    mode: 0744
+
+- name: debian | update
+  apt: update_cache=yes
+
+- name: debian | Installing pbis-open from apt repo
+  apt: name=pbis-open update_cache=yes state=latest
+
+- name: debian | checking the Domain status
+  shell: /opt/pbis/bin/lsa get-status | grep Netbios | awk '{print $3}'
+  register: domain_status
+  changed_when: false
+
+- name: debian | Joining host to AD domain
+  command: 'domainjoin-cli join "{{ ad_domain }}" "{{ ad_user }}" "{{ ad_password }}"'
+  when:  domain_status.stdout != "{{ ad_domain_netbios }}"
+
+- name: debian | setting includedir in sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    line: "#includedir /etc/sudoers.d"
+    state: present
+    validate: "/usr/sbin/visudo -cf %s"
+
+- name: debian | granting sudo rights to Domain Groups
+  lineinfile:
+    dest: /etc/sudoers
+    line: "%{{ ad_domain_netbios }}\\\\{{ item }} ALL=(ALL:ALL) ALL"
+    state: present
+    validate: 'visudo -cf %s'
+  with_items: "{{ domain_sudo_groups }}"
+
+- name: debian | Checking UserDomainPrefix
+  shell: /opt/pbis/bin/config --show UserDomainPrefix
+  register: UserDomainPrefix
+  changed_when: false
+
+- name: debian | Checking AssumeDefaultDomain
+  shell: /opt/pbis/bin/config --show AssumeDefaultDomain
+  register: AssumeDefaultDomain
+  changed_when: false
+
+- name: debian | Checking LoginShellTemplate
+  shell: /opt/pbis/bin/config --show LoginShellTemplate
+  register: LoginShellTemplate
+  changed_when: false
+
+- name: debian | Checking Local_LoginShellTemplate
+  shell: /opt/pbis/bin/config --show Local_LoginShellTemplate
+  register: Local_LoginShellTemplate
+  changed_when: false
+
+# Commenting these out, as they were not used or commented out in the workstation_config.sh
+# 
+#- name: debian | Checking Local_HomeDirTemplate
+#  shell: /opt/pbis/bin/config --show Local_HomeDirTemplate
+#  register: Local_HomeDirTemplate
+#  changed_when: false
+#
+#- name: debian | Checking HomeDirTemplate
+#  shell: /opt/pbis/bin/config --show HomeDirTemplate
+#  register: HomeDirTemplate
+#  changed_when: false
+#
+#- name: debian | CRequireMembershipOf
+#  shell: /opt/pbis/bin/config --show RequireMembershipOf
+#  register: RequireMembershipOf
+#  changed_when: false
+
+- name: debian | setting domain prefix
+  command: '/opt/pbis/bin/config UserDomainPrefix {{ pri_domain_name }}'
+  when:
+    UserDomainPrefix.stdout_lines.1 != "{{ pri_domain_name }}"
+
+- name: debian | assume default domain
+  command: '/opt/pbis/bin/config AssumeDefaultDomain true'
+  when:
+    AssumeDefaultDomain.stdout_lines.1 != "true"
+
+- name: debian | setting default shell to bash
+  command: '/opt/pbis/bin/config LoginShellTemplate /bin/bash'
+  when:
+    LoginShellTemplate.stdout_lines.1 != "/bin/bash"
+
+- name: debian | setting default shell to bash
+  command: '/opt/pbis/bin/config Local_LoginShellTemplate /bin/bash'
+  when:
+    Local_LoginShellTemplate.stdout_lines.1 != "/bin/bash"
+
+# Commenting these out, as they were not used or commented out in the workstation_config.sh
+# This is the same as the above lines (those need to be commented/uncommented with these)
+#
+#- name: debian | setting default home directory
+#  command: '/opt/pbis/bin/config HomeDirTemplate %H/%U'
+#  when:
+#    HomeDirTemplate.stdout_lines.1 != "%H/%U"
+#
+#- name: debian | setting default home directory template
+#  command: '/opt/pbis/bin/config Local_HomeDirTemplate %H/%U'
+#  when:
+#    Local_HomeDirTemplate.stdout_lines.1 != "%H/%U"
+#
+#- name: debian | requiring membership of security group
+#  command: '/opt/pbis/bin/config RequireMembershipOf "{{ ad_domain }}\\{{ domain_sudo_groups }}"'
+#  when:
+#    RequireMembershipOf.stdout_lines.1 != "{{ ad_domain }}\\{{ domain_sudo_groups }}"
+

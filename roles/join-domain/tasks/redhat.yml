@@ -1,0 +1,45 @@
+---
+
+- name: redhat | Adding PowerBroker Identity Services repo
+  get_url:
+    url: "{{ pbis_yum_repo }}"
+    dest: "/etc/yum.repos.d/pbiso.repo"
+    mode: 0744
+
+- name: redhat | Installing pbis-open from yum repo
+  yum: name=pbis-open-upgrade state=latest update_cache=yes
+
+- name: redhat | Installing pbis-open from yum repo
+  yum: name=pbis-open state=latest update_cache=yes
+
+- name: Fix issues on RedHat or centOS 6 versions, soft link
+  file: src=/etc/pbis/redhat/lwsmd dest=/etc/init.d/lwsmd state=link
+  when: ansible_distribution_major_version == "6"
+
+- name: Fix issues on RedHat or centOS 6 versions, checking service status
+  service: name=lwsmd state=started enabled=yes
+  when: ansible_distribution_major_version == "6"
+
+- name: redhat | checking the Domain status
+  shell: /opt/pbis/bin/lsa get-status | grep Netbios | awk '{print $3}'
+  register: domain_status
+
+- name: redhat | Joining host to active directory domain
+# command: 'domainjoin-cli join --ou {{ ad_ou }} {{ ad_domain }} {{ ad_user }} {{ ad_password }}'
+  command: 'domainjoin-cli join {{ ad_domain }} {{ ad_user }} {{ ad_password }}'
+  when:  domain_status.stdout != "{{ ad_domain_netbios }}"
+
+- name: redhat | setting includedir in sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    line: "#includedir /etc/sudoers.d"
+    state: present
+    validate: "/usr/sbin/visudo -cf %s"
+
+- name: redhat | granting sudo rights to Domain Groups
+  lineinfile:
+    dest: /etc/sudoers
+    line: "%{{ ad_domain_netbios }}\\\\{{ item }} ALL=(ALL:ALL) ALL"
+    state: present
+    validate: 'visudo -cf %s'
+  with_items: "{{ domain_sudo_groups }}"

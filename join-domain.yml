@@ -1,0 +1,6 @@
+---
+
+- name: join domain
+  hosts: all
+  roles:
+    - join-domain
