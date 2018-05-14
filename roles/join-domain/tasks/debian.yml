@@ -24,7 +24,7 @@
 
 - name: debian | joining host to AD domain
   command: 'domainjoin-cli join "{{ ad_domain }}" "{{ ad_user }}" "{{ ad_password }}"'
-  when:  domain_status|length==0 or domain_status[0].stdout|string not in ad_domain_netbios
+  when:  domain_status is defined or domain_status[0].stdout_lines|string not in ad_domain_netbios
 
 - name: debian | setting includedir in sudoers
   lineinfile:
@@ -78,23 +78,20 @@
 
 - name: debian | setting domain prefix
   command: '/opt/pbis/bin/config UserDomainPrefix {{ pri_domain_name }}'
-  when:
-    UserDomainPrefix.stdout_lines.1|string not in pri_domain_name
-
+  when:  UserDomainPrefix is defined or UserDomainPrefix[0].stdout_lines|string not in pri_domain_name
+  when:  domain_status is defined or domain_status[0].stdout_lines|string not in ad_domain_netbios
+    
 - name: debian | setup assume default domain
   command: '/opt/pbis/bin/config AssumeDefaultDomain true'
-  when:
-    AssumeDefaultDomain.stdout_lines.1 != "true"
+  when:  AssumeDefaultDomain is defined or AssumeDefaultDomain.stdout_lines.1 != "true"
 
 - name: debian | setting default shell to bash
   command: '/opt/pbis/bin/config LoginShellTemplate /bin/bash'
-  when:
-    LoginShellTemplate.stdout_lines.1 != "/bin/bash"
+  when:  LoginShellTemplate is defined or LoginShellTemplate.stdout_lines.1 != "/bin/bash"
 
 - name: debian | setting local default shell to bash
   command: '/opt/pbis/bin/config Local_LoginShellTemplate /bin/bash'
-  when:
-    Local_LoginShellTemplate.stdout_lines.1 != "/bin/bash"
+  when:  Local_LoginShellTemplate is defined or Local_LoginShellTemplate.stdout_lines.1 != "/bin/bash"
 
 # Commenting these out, as they were not used or commented out in the workstation_config.sh
 #
