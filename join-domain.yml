@@ -1,6 +1,16 @@
----
+--- 
+############################################################################################
+# INITIAL SETUP                                                                            #
+############################################################################################
+- 
+  become: true		    # Sudo all commands in the playbook
+  hosts: all		    # Defines what computers this is being run on
+  name: join domain     # Name of the playbook
+# Remote user not defined here as it is defined in ansible.cfg
 
-- name: join domain
-  hosts: all
+############################################################################################
+# RUNNING THE PLAY                                                                         #
+############################################################################################  
+  
   roles:
     - join-domain
