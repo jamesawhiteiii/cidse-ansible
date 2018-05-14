@@ -1,6 +1,5 @@
 ---
 
-
 - name: debian | Add apt key
   apt_key:
     url: "{{apt_key}}"
@@ -25,22 +24,24 @@
 
 - name: debian | Joining host to AD domain
   command: 'domainjoin-cli join "{{ ad_domain }}" "{{ ad_user }}" "{{ ad_password }}"'
-  when:  domain_status.stdout != "{{ ad_domain_netbios }}"
+  when:  domain_status.stdout|string not in ad_domain_netbios
+  #  when:  domain_status.stdout != "{{ ad_domain_netbios }}"
 
-- name: debian | setting includedir in sudoers
-  lineinfile:
-    dest: /etc/sudoers
-    line: "#includedir /etc/sudoers.d"
-    state: present
-    validate: "/usr/sbin/visudo -cf %s"
-
-- name: debian | granting sudo rights to Domain Groups
-  lineinfile:
-    dest: /etc/sudoers
-    line: "%{{ ad_domain_netbios }}\\\\{{ item }} ALL=(ALL:ALL) ALL"
-    state: present
-    validate: 'visudo -cf %s'
-  with_items: "{{ domain_sudo_groups }}"
+# SUDOERS NOT INCLUDED CURRENTLY
+#- name: debian | setting includedir in sudoers
+#  lineinfile:
+#    dest: /etc/sudoers
+#    line: "#includedir /etc/sudoers.d"
+#    state: present
+#    validate: "/usr/sbin/visudo -cf %s"
+#
+#- name: debian | granting sudo rights to Domain Groups
+#  lineinfile:
+#    dest: /etc/sudoers
+#    line: "%{{ ad_domain_netbios }}\\\\{{ item }} ALL=(ALL:ALL) ALL"
+#    state: present
+#    validate: 'visudo -cf %s'
+#  with_items: "{{ domain_sudo_groups }}"
 
 - name: debian | Checking UserDomainPrefix
   shell: /opt/pbis/bin/config --show UserDomainPrefix

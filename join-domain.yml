@@ -6,7 +6,16 @@
   become: true		    # Sudo all commands in the playbook
   hosts: all		    # Defines what computers this is being run on
   name: join domain     # Name of the playbook
-# Remote user not defined here as it is defined in ansible.cfg
+# remote_user: techs    # Not defined here as it is defined in ansible.cfg
+
+  vars_prompt:
+  - name: "ad_user"
+    prompt: "Enter Fulton AD username (jsmithad):"
+    private: no
+    
+  - name: "ad_password"
+    prompt: "Enter Fulton AD password:"
+    private: yes
 
 ############################################################################################
 # RUNNING THE PLAY                                                                         #
