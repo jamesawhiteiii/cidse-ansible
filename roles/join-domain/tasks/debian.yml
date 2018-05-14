@@ -24,7 +24,7 @@
 
 - name: debian | joining host to AD domain
   command: 'domainjoin-cli join "{{ ad_domain }}" "{{ ad_user }}" "{{ ad_password }}"'
-  when:  domain_status is defined or domain_status[0].stdout_lines|string not in ad_domain_netbios
+  when:  domain_status|length==0 is defined or domain_status[0].stdout_lines|string not in ad_domain_netbios
 
 - name: debian | setting includedir in sudoers
   lineinfile:
@@ -79,7 +79,7 @@
 - name: debian | setting domain prefix
   command: '/opt/pbis/bin/config UserDomainPrefix {{ pri_domain_name }}'
   when:  UserDomainPrefix is defined or UserDomainPrefix[0].stdout_lines|string not in pri_domain_name
-  when:  domain_status is defined or domain_status[0].stdout_lines|string not in ad_domain_netbios
+
     
 - name: debian | setup assume default domain
   command: '/opt/pbis/bin/config AssumeDefaultDomain true'
