@@ -18,7 +18,7 @@
   apt: name=pbis-open update_cache=yes state=latest
 
 - name: debian | checking the current domain status
-  shell: /opt/pbis/bin/lsa get-status | grep Netbios | awk '{print $3}'
+  shell: /opt/pbis/bin/lsa get-status | grep Netbios | awk '{print $3}' | grep "{{ ad_domain_netbios }}"
   register: domain_status
   changed_when: false
 
