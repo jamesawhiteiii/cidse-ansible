@@ -10,12 +10,13 @@
 
   vars_prompt:
   - name: "ad_user"
-    prompt: "Enter Fulton AD username (jsmithad)"
+    prompt: "Fulton AD username"
     private: no
     
   - name: "ad_password"
-    prompt: "Enter Fulton AD password"
+    prompt: "Fulton AD password"
     private: yes
+    confirm: yes
 
 ############################################################################################
 # RUNNING THE PLAY                                                                         #

@@ -50,53 +50,67 @@
 - name: debian | checking UserDomainPrefix
   shell: /opt/pbis/bin/config --show UserDomainPrefix | grep {{ pri_domain_name }}
   register: UserDomainPrefix
+  ignore_errors: true
+  failed_when: false
   changed_when: false
 
 - name: debian | checking AssumeDefaultDomain
   shell: /opt/pbis/bin/config --show AssumeDefaultDomain | grep true
   register: AssumeDefaultDomain
+  ignore_errors: true
+  failed_when: false
   changed_when: false
 
 - name: debian | checking LoginShellTemplate
   shell: /opt/pbis/bin/config --show LoginShellTemplate | grep "/bin/bash"
   register: LoginShellTemplate
+  ignore_errors: true
+  failed_when: false
   changed_when: false
 
 - name: debian | checking Local_LoginShellTemplate
   shell: /opt/pbis/bin/config --show Local_LoginShellTemplate | grep "/bin/bash"
   register: Local_LoginShellTemplate
+  ignore_errors: true
+  failed_when: false
   changed_when: false
 
 - name: debian | checking Local_HomeDirTemplate
   shell: /opt/pbis/bin/config --show Local_HomeDirTemplate
   register: Local_HomeDirTemplate
+  ignore_errors: true
+  failed_when: false
   changed_when: false
 
 - name: debian | checking HomeDirTemplate
   shell: /opt/pbis/bin/config --show HomeDirTemplate
   register: HomeDirTemplate
+  ignore_errors: true
+  failed_when: false
   changed_when: false
 
 - name: debian | checking RequireMembershipOf
   shell: /opt/pbis/bin/config --show RequireMembershipOf
   register: RequireMembershipOf
+  ignore_errors: true
+  failed_when: false
   changed_when: false
 
 - name: debian | setting domain prefix
   command: '/opt/pbis/bin/config UserDomainPrefix {{ pri_domain_name }}'
-  when:  UserDomainPrefix[0] is not defined or UserDomainPrefix.stdout|string not in pri_domain_name
+  when:  UserDomainPrefix.stdout == '' or UserDomainPrefix.stdout != pri_domain_name
 
 - name: debian | setup assume default domain
   command: '/opt/pbis/bin/config AssumeDefaultDomain true'
-  when:  AssumeDefaultDomain[0] is not defined or AssumeDefaultDomain.stdout != "true"
+  when:  AssumeDefaultDomain.stdout == '' or AssumeDefaultDomain.stdout != "true"
 
 - name: debian | setting default shell to bash
   command: '/opt/pbis/bin/config LoginShellTemplate /bin/bash'
-  when:  LoginShellTemplate[0] is not defined or LoginShellTemplate.stdout != "/bin/bash"
+  when:  LoginShellTemplate.stdout == '' or LoginShellTemplate.stdout != "/bin/bash"
 
 - name: debian | setting local default shell to bash
   command: '/opt/pbis/bin/config Local_LoginShellTemplate /bin/bash'
-  when:  Local_LoginShellTemplate[0] is not defined or Local_LoginShellTemplate.stdout != "/bin/bash"
+  when:  Local_LoginShellTemplate.stdout == '' or Local_LoginShellTemplate.stdout != "/bin/bash"
 
 # Commenting these out, as they were not used or commented out in the workstation_config.sh
 #
