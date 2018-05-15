@@ -16,11 +16,6 @@
   - name: "ad_password"
     prompt: "Enter Fulton AD password"
     private: yes
-# Encrypting of password requires passlib to be installed
-    encrypt: "md5_crypt"
-    confirm: yes
-    salt_size: 7
-    salt: "saltysalt"
 
 ############################################################################################
 # RUNNING THE PLAY                                                                         #
