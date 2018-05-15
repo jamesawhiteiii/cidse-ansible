@@ -23,6 +23,7 @@
   shell: /opt/pbis/bin/lsa get-status | grep Netbios | awk '{print $3}' | grep "{{ ad_domain_netbios }}"
   register: domain_status
   ignore_errors: true
+  failed_when: false
   changed_when: false
 
 - name: debian | debug output of domain status check
