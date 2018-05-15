@@ -29,12 +29,14 @@
 - name: debian | debug output of domain status check
   debug: msg="{{ domain_status }}"
 
+- name: debian | debug password encryption
+  shell: echo my password is {{ ad_password }}
+
 - name: debian | joining host to AD domain
   command: 'domainjoin-cli join "{{ ad_domain }}" "{{ ad_user }}" "{{ ad_password }}"'
   when:  domain_status[0] is not defined or domain_status[0].stdout|string not in ad_domain_netbios
 
-- name: debian | testing password encryption
-  shell: echo my password is {{ ad_password }}
+
 
 - name: debian | setting includedir in sudoers
   lineinfile:
