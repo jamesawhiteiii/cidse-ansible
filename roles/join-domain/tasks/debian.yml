@@ -14,7 +14,6 @@
 - name: debian | apt cache update
   apt: 
     update_cache: yes
-    cache_valid_time: 86400
 
 - name: debian | installing pbis-open from apt repo
   apt: name=pbis-open update_cache=yes state=latest
@@ -28,7 +27,7 @@
 
 - name: debian | joining host to AD domain
   command: 'domainjoin-cli join "{{ ad_domain }}" "{{ ad_user }}" "{{ ad_password }}"'
-  when:  domain_status[0] is not defined or domain_status[0].stdout|string not in ad_domain_netbios
+  when:  domain_status[0] is not defined or domain_status.stdout|string not in ad_domain_netbios
 
 - name: debian | setting includedir in sudoers
   lineinfile:
@@ -82,19 +81,19 @@
 
 - name: debian | setting domain prefix
   command: '/opt/pbis/bin/config UserDomainPrefix {{ pri_domain_name }}'
-  when:  UserDomainPrefix[0] is not defined or UserDomainPrefix[0].stdout|string not in pri_domain_name
+  when:  UserDomainPrefix[0] is not defined or UserDomainPrefix.stdout|string not in pri_domain_name
 
 - name: debian | setup assume default domain
   command: '/opt/pbis/bin/config AssumeDefaultDomain true'
-  when:  AssumeDefaultDomain[0] is not defined or AssumeDefaultDomain[0].stdout != "true"
+  when:  AssumeDefaultDomain[0] is not defined or AssumeDefaultDomain.stdout != "true"
 
 - name: debian | setting default shell to bash
   command: '/opt/pbis/bin/config LoginShellTemplate /bin/bash'
-  when:  LoginShellTemplate[0] is not defined or LoginShellTemplate[0].stdout != "/bin/bash"
+  when:  LoginShellTemplate[0] is not defined or LoginShellTemplate.stdout != "/bin/bash"
 
 - name: debian | setting local default shell to bash
   command: '/opt/pbis/bin/config Local_LoginShellTemplate /bin/bash'
-  when:  Local_LoginShellTemplate[0] is not defined or Local_LoginShellTemplate[0].stdout != "/bin/bash"
+  when:  Local_LoginShellTemplate[0] is not defined or Local_LoginShellTemplate.stdout != "/bin/bash"
 
 # Commenting these out, as they were not used or commented out in the workstation_config.sh
 #
