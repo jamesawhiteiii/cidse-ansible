@@ -30,7 +30,7 @@
 
 - name: debian | joining host to AD domain
   command: 'domainjoin-cli join "{{ ad_domain }}" "{{ ad_user }}" "{{ ad_password }}"'
-  when:  domain_status[0] is not defined or domain_status.stdout not in ad_domain_netbios
+  when:  domain_status.stdout == '' or domain_status.stdout != ad_domain_netbios
 
 - name: debian | setting includedir in sudoers
   lineinfile:
