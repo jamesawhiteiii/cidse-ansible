@@ -12,7 +12,9 @@
     mode: 0744
 
 - name: debian | apt cache update
-  apt: update_cache=yes
+  apt: 
+    update_cache: yes
+    cache_valid_time: 86400
 
 - name: debian | installing pbis-open from apt repo
   apt: name=pbis-open update_cache=yes state=latest
@@ -20,6 +22,7 @@
 - name: debian | checking the current domain status
   shell: /opt/pbis/bin/lsa get-status | grep Netbios | awk '{print $3}' | grep "{{ ad_domain_netbios }}"
   register: domain_status
+  ignore_errors: true
   changed_when: false
 
 - name: debian | joining host to AD domain
