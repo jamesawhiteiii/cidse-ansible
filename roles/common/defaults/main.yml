@@ -1,0 +1,14 @@
+---
+############################################################################################
+# DEFAULT VARIABLES FOR COMMON ROLE                                                        #
+############################################################################################
+common_packages:
+  - sublime-text
+  - google-chrome-stable
+  - git
+  - cifs-utils
+  - byobu
+
+common_rtpass: "$6$aMMGt4ZQuP.Q4$6PN1nHcqAUQjtDdBmPXM1o2CCJxVFl.wCbpyju5nlkBjGKZX9gokV4Sj7WA2aPU7IcIcx6GN9qqMcMxq8CdFp."
+common_fsuser: "deploy"
+common_fspass: "$6$E6FH6Lsg30j$uasCbR704g1n06T7br76L8g6dmDPrX49Rl2lXvaO3jZSn67gdmvHP5bykzsg9ugH7e1mxfW5wnHdN7Lx9Fi7z."

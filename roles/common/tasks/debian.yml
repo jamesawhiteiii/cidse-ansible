@@ -1,0 +1,115 @@
+---
+############################################################################################
+# DEBIAN TASKS                                                                             #
+############################################################################################
+
+##########################################################################
+# Update root password                                                   #
+##########################################################################
+- 
+  user: 
+    name: root
+    password: {{ common_rtpass }}
+    update_password: always
+  name: "debian | update root password"
+
+##########################################################################
+# Enable serial communication over USB for all users                     #
+##########################################################################
+#
+# This is used by the classes who plug Intel Galileo boards into the
+# computers. BY default Linux requires users to have sudo to enable serial
+# over USB. This writes a rule that is read on boot to allow all users to
+# modify the TTY interfaces an enable serial communication. More info below
+#
+# https://askubuntu.com/questions/112568/how-do-i-allow-a-non-default-user-to-use-serial-device-ttyusb0
+#
+# First touch the necessary file
+-
+  file:
+    path: /etc/udev/rules.d/50-myusb.rules
+    state: touch
+    mode: 0644
+  name: debian | setup custom file rule for serial over USB
+
+# Add the lines to the file
+# lineinfile marked as preview as of writing, interface subject to change
+-
+  lineinfile:
+    dest: /etc/udev/rules.d/50-myusb.rules
+    state: present
+    line: 'KERNEL=="ttyACM[0-9]*",MODE="0666"'
+  name: debian | enable serial over USB for all users
+  
+##########################################################################
+# Add apt keys and repositories                                          #
+##########################################################################
+- 
+ apt_key: 
+   state: present
+   url: "https://download.sublimetext.com/sublimehq-pub.gpg"
+ name: debian | install GPG key for Sublime Text
+- 
+ apt_repository:
+   repo: deb {{ item.repo }} {{ item.add }}
+   state: present
+   filename: "{{ item.file }}"
+ with_items:
+   - repo: https://download.sublimetext.com/
+     add: apt/stable/
+     file: sublime
+   - repo: http://dl.google.com/linux/chrome/deb/
+     add: stable main
+     file: google-chrome
+ name: debian | add specified repositories into sources list
+
+##########################################################################
+# Update and upgrade packages (apt-get update && apt-get upgrade)        #
+##########################################################################
+- 
+  apt: 
+    update_cache: true
+    upgrade: dist
+    autoremove: yes
+  name: "debian | update and upgrade existing packages"
+
+##########################################################################
+# Install new packages as defined in 'my_packages' variable              #
+##########################################################################
+-
+  apt:
+    state: installed
+    pkg: "{{ item }}"
+    update_cache: yes
+  with_items:
+    - "{{ common_packages }}"
+  name: debian | install common packages
+
+##########################################################################
+# Copy over end user wallpaper                                           #
+##########################################################################
+- 
+  copy:
+    src: "{{ role_path }}/files/warty-final-ubuntu.png"
+    dest: "/usr/share/backgrounds/warty-final-ubuntu.png"
+    owner: root
+    group: root
+    mode: 0744
+    force: yes
+  name: debian | copy end-user wallpaper
+  
+##########################################################################
+# Setup purge old kernels cron job                                       #
+##########################################################################
+# Cron jobs run as root just FYI, hence no sudo
+# This will keep the three most recent kernels (as safe measure)
+# NOTE: cron module is marked as preview in Ansible 2.5 so interface for
+# it could change and break in the future
+# 
+# This particular cron job will run every Monday at 00:30
+-
+  cron:
+    minute: 30
+    weekday: 1
+    job: "purge-old-kernels --keep 3 -qy"
+  name: debian | purge old kernels cronjob setup
