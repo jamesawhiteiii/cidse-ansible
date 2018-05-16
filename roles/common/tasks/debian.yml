@@ -9,7 +9,7 @@
 - 
   user: 
     name: root
-    password: {{ common_rtpass }}
+    password: "{{ common_rtpass }}"
     update_password: always
   name: "debian | update root password"
 
