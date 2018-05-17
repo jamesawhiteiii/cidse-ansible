@@ -58,6 +58,6 @@
   when: landscape_check == 1
   name: debian | copy landscape client.conf
   
-#- shell: landscape-config --computer-title $(hostname -f) --script-users nobody,landscape,root --silent
-#  when landscape_check.rc == 1
-#  name: debian | run join landscape command
+- shell: landscape-config --computer-title $(hostname -f) --script-users nobody,landscape,root --silent
+  when landscape_check.rc == 1
+  name: debian | run join landscape command
