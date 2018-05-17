@@ -7,7 +7,7 @@
 # Check if joined to landscape                                           #
 ##########################################################################
 
-- shell: grep "{{ landscape_url }}" /etc/landscape/client.conf
+- shell: grep {{ landscape_url }} /etc/landscape/client.conf
     register: landscape_check
     ignore_errors: true
     failed_when: false
