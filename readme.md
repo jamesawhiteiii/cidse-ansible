@@ -12,7 +12,7 @@ understand the basics of Git source control.
 **Role** - As shown in the directory structure below, a role is settings, configuration files, packages etc for a specific purpose  
 **Task** - These are individual script-like items in a role, for example you might install a package or verify a file exists
 
-## Running a Playbook & Commands
+## Running a Playbook & Commands 
 
 To run a playbook ensure your present working directory is the main 'ansible' folder. Perform a 'git-pull' to ensure you
 have the latest version of all the Ansible files before running them against any hosts.    
