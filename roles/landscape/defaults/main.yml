@@ -1,0 +1,13 @@
+---
+############################################################################################
+# DEFAULT VARIABLES FOR LANDSCAPE ROLE                                                     #
+############################################################################################
+
+# Line entry for /etc/hosts
+landscape_hostsentry: "10.220.67.136 landscape.fulton.asu.edu"
+
+# Lines for building the landscape config file from the template
+# Don't change the template, just change these if needed
+# Hostname is passed as part of the register command
+landscape_url: "https://landscape.fulton.asu.edu/message-system"
+landscape_ping_url: "http://landscape.fulton.asu.edu/ping"

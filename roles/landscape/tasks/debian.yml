@@ -1,0 +1,63 @@
+---
+############################################################################################
+# DEBIAN TASKS                                                                             #
+############################################################################################
+
+##########################################################################
+# Check if joined to landscape                                           #
+##########################################################################
+
+- shell: grep "{{ landscape_url }}" /etc/landscape/client.conf
+    register: landscape_check
+    ignore_errors: true
+    failed_when: false
+    changed_when: false
+  name: debian | check landscape client.conf for current status
+  
+- debug:
+    msg: "SUCCESS: Client is already joined to landscape"
+    when: landscape_check.rc == 0
+  name: debian | current landscape status
+  
+##########################################################################
+# Join to landscape (if needed)                                          #
+##########################################################################
+
+- lineinfile:
+    dest: /etc/hosts
+    state: present
+    line: "{{ landscape_hostsentry }}"
+  name: debian | landscape server in hosts file
+  
+- copy:
+    src: "{{ role_path }}/files/license.txt"
+    dest: "/etc/landscape/"
+    owner: root
+    group: root
+    mode: 0755
+    force: yes
+  when: landscape_check.rc == 1
+  name: debian | copy landscape license file
+  
+- copy:
+    src: "{{ role_path }}/files/landscape_server.pem"
+    dest: "/etc/landscape/"
+    owner: root
+    group: root
+    mode: 0755
+    force: yes
+  when: landscape_check.rc == 1
+  name: debian | copy landscape SSL cert
+
+- template:
+    src: "{{ role_path }}/templates/client.conf.j2
+    dest: /etc/landscape/client.conf
+    owner: root
+    group: root
+    mode: 0755
+  when: landscape_check == 1
+  name: debian | copy landscape client.conf
+  
+#- shell: landscape-config --computer-title $(hostname -f) --script-users nobody,landscape,root --silent
+#  when landscape_check.rc == 1
+#  name: debian | run join landscape command

@@ -1,0 +1,10 @@
+[client]
+log_level = info
+url = {{ landscape_url }}
+ping_url = {{ landscape_ping_url }}
+data_path = /var/lib/landscape/client
+tags = new
+computer_title = $computer_title
+include_manager_plugins = ScriptExecution
+ssl_public_key = /etc/landscape/landscape_server.pem
+account_name = standalone
