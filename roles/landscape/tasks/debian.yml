@@ -16,7 +16,7 @@
   
 - debug:
     msg: "SUCCESS: Client is already joined to landscape"
-    when: landscape_check.rc == 0
+  when: landscape_check.rc == 0
   name: debian | current landscape status
   
 ##########################################################################
