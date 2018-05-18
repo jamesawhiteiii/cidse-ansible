@@ -4,5 +4,12 @@
 #              MASTER PLAYBOOK                  #
 #################################################
 
+- name: cidse | common
+  include: common.yml
+  
+- name: cidse | join-domain
+  include: join-domain.yml
 
+- name: cidse | landscape
+  include: landscape.yml
 
