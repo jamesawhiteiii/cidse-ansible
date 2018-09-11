@@ -39,7 +39,7 @@
 - name: redhat | granting sudo rights to Domain Groups
   lineinfile:
     dest: /etc/sudoers
-    line: "%{{ ad_domain_netbios }}\\\\{{ item }} ALL=(ALL:ALL) ALL"
+    line: "%{{ ad_domain_netbios }}\\\{{ item }} ALL=(ALL:ALL) ALL"
     state: present
     validate: 'visudo -cf %s'
-  with_items: "{{ domain_sudo_groups }}"
+  with_items: "{{ join-domain_sudogroups }}"

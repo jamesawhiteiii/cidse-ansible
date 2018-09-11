@@ -1,0 +1,4 @@
+---
+  join-domain_sudogroups:
+    - "cidse-it"
+    - "CIDSE-jrande32_Lab_Admins"

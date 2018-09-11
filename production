@@ -22,10 +22,10 @@
             staff_{dept}
                 hostnames
     2.1 servers | Groups & Hostnames
-        servers_cidseit
-            hostnames
-        servers_shared
-            hostnames
+            servers_cidseit
+                hostnames
+            servers_shared
+                hostnames
 
 
 ####################################################

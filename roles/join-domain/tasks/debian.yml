@@ -1,11 +1,11 @@
 ---
 
-- name: debian | add PBIS apt key
+- name: debian | add pbis-open apt key
   apt_key:
     url: "{{apt_key}}"
     state: present
 
-- name: debian | adding PowerBroker Identity Service repo
+- name: debian | add pbis-open repo
   get_url:
     url: "{{pbis_apt_repo}}"
     dest: "/etc/apt/sources.list.d/pbiso.list"
@@ -15,7 +15,7 @@
   apt: 
     update_cache: yes
 
-- name: debian | installing pbis-open from apt repo
+- name: debian | install pbis-open
   apt: 
     pkg: pbis-open 
     update_cache: yes 
@@ -45,10 +45,10 @@
 - name: debian | granting sudo rights to Domain Groups
   lineinfile:
     dest: /etc/sudoers
-    line: "%{{ ad_domain_netbios }}\\\\{{ item }} ALL=(ALL:ALL) ALL"
+    line: "%{{ ad_domain_netbios }}\\\{{ item }} ALL=(ALL:ALL) ALL"
     state: present
     validate: 'visudo -cf %s'
-  with_items: "{{ domain_sudo_groups }}"
+  with_items: "{{ join-domain_sudogroups }}"
 
 - name: debian | checking UserDomainPrefix
   shell: /opt/pbis/bin/config --show UserDomainPrefix | grep {{ pri_domain_name }}

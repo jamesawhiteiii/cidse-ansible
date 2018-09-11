@@ -7,7 +7,7 @@ ad_user: ""                                                      # enter your do
 ad_domain: "fulton.ad.asu.edu"                                   # enter the FQDN to join to -- eg. fulton.ad.asu.edu
 ad_ou: ""                                                        # define active directory OU to place computer accounts (would require modifying the debian tasks 
 ad_domain_netbios: "FULTON"                                      # enter NETBIOS name...ex...example.org = EXAMPLE -- ensure you use all capital letters
-domain_sudo_groups: "cidse-it"                                   # define AD Groups to grant sudo rights....domain admins is best at the very least...
+join-domain_sudogroups: "cidse-it"                               # define AD Groups to grant sudo rights (in some cases is overridden by files in group_vars)
 pri_domain_name: "ASUAD"                                         # defines primary domain name, was previously unused in tasks files, now am using for prefix
 apt_key: "http://repo.pbis.beyondtrust.com/apt/RPM-GPG-KEY-pbis"
 yum_key: "http://repo.pbis.beyondtrust.com/yum/RPM-GPG-KEY-pbis"

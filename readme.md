@@ -37,23 +37,32 @@ user and prompting for both the SSH pass and sudo password. Below is an example 
 the Ansible ping is not your standard ping. It performs a full SSH connection to the remote machine. The ping module can
 be useful in troubleshooting connectivtiy issues with machines.
 ```
-    ansible -i <inventory> <host/group> -m ping -u techs -K
+    ansible -i <inventory> <host/group> -m ping -u someserviceaccount -K
 ```
 
 ## Current Roles Overview
 
 ```
 Common:
-   Sets the root password
    Enables serial over USB for all users
-   Adds Chrome & Sublime repos
+   Adds repos
+        Chrome
+        Sublime Text
+        PBIS-Open
    Runs an apt-get update & upgrade
    Installs common packages
-        Chrome
-        Sublime
-        Git
-        CIFS Utils
-        Byobu (Kernel Cleanup)
+        byobu      (Used for kernel cleanup cron job)
+        cifs-utils
+        clamav-daemon
+        clamtk
+        git
+        gksu
+        google-chrome-stable
+        grub2-splashimages
+        openssh-server
+        open-vm-tools
+        pbis-open
+        sublime-text
     Copies End-User Wallpaper
     Sets up cron job for kernel cleanup once a week
 	
