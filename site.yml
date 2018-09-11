@@ -5,11 +5,11 @@
 #################################################
 
 - name: cidse | common
-  include: common.yml
+  import_playbook: common.yml
   
 - name: cidse | join-domain
-  include: join-domain.yml
+  import_playbook: join-domain.yml
 
 - name: cidse | landscape
-  include: landscape.yml
+  import_playbook: landscape.yml
 
