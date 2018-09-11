@@ -36,7 +36,7 @@
 [workstations:children]
 workstations_labs
 workstations_faculty
-workstation_staff
+workstations_staff
 
 
 [servers:children]
