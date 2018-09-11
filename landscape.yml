@@ -3,8 +3,8 @@
 # INITIAL SETUP                                                                            #
 ############################################################################################
 - 
-  become: true		    # Sudo all commands in the playbook
-  hosts: all		    # Defines what computers this is being run on
+  become: true		      # Sudo all commands in the playbook
+  hosts: all		        # Defines what computers this is being run on
   name: landscape       # Name of the playbook
 # remote_user: techs    # Not defined here as it is defined in ansible.cfg
 

@@ -126,4 +126,5 @@
     minute: 30
     weekday: 1
     job: "purge-old-kernels --keep 3 -qy"
+    state: present
   name: debian | purge old kernels cronjob setup
