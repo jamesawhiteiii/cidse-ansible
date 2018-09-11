@@ -48,7 +48,8 @@
     line: "%{{ ad_domain_netbios }}\\\\\\{{ item }} ALL=(ALL:ALL) ALL"
     state: present
     validate: 'visudo -cf %s'
-  with_items: "{{ join-domain_sudogroups }}"
+  with_items: 
+    - "{{ join-domain_sudogroups }}"
 
 - name: debian | checking UserDomainPrefix
   shell: /opt/pbis/bin/config --show UserDomainPrefix | grep {{ pri_domain_name }}
