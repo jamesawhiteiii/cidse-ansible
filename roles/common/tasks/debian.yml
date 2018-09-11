@@ -24,20 +24,14 @@
 #
 # https://askubuntu.com/questions/112568/how-do-i-allow-a-non-default-user-to-use-serial-device-ttyusb0
 #
-# Touch (create) the necessary file
--
-  file:
-    path: /etc/udev/rules.d/50-myusb.rules
-    state: touch
-    mode: 0644
-  name: debian | setup custom file rule for serial over USB
-
 # Add the lines to the file
 # lineinfile marked as preview as of writing, interface subject to change
 -
   lineinfile:
     dest: /etc/udev/rules.d/50-myusb.rules
     state: present
+    create: yes
+    mode: 0644
     line: 'KERNEL=="ttyACM[0-9]*",MODE="0666"'
   name: debian | enable serial over USB for all users
   

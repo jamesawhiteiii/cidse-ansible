@@ -22,8 +22,8 @@ The syntax for a playbook command is:
 ```
 
 -i -- specifies which inventory file to lookup hosts / host groups in  
--K -- asks for the sudo password before starting the playbook
--k -- asks for the SSH password before starting (useful if debugging issues with SSH connectivity)
+-K -- asks for the sudo password before starting the playbook  
+-k -- asks for the SSH password before starting (used to connect with user account/password and for debugging issues with SSH connectivity)  
 -u -- allows you to pass a user to SSH as [Example: *ansible-playbook ... -u techs*]
 
 #### Ad-hoc Commands
@@ -37,7 +37,7 @@ user and prompting for both the SSH pass and sudo password. Below is an example 
 the Ansible ping is not your standard ping. It performs a full SSH connection to the remote machine. The ping module can
 be useful in troubleshooting connectivtiy issues with machines.
 ```
-    ansible -i <inventory> <host/group> -m ping -u someserviceaccount -K
+    ansible -i <inventory> <host/group> -m ping -u someserviceaccount -Kk
 ```
 
 ## Current Roles Overview
