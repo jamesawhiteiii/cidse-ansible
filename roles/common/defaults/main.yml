@@ -3,11 +3,21 @@
 # DEFAULT VARIABLES FOR COMMON ROLE                                                        #
 ############################################################################################
 common_packages:
-  - sublime-text
-  - google-chrome-stable
-  - git
+  - byobu                 # Used for kernel cleanup cron job
   - cifs-utils
-  - byobu
+  - clamav-daemon
+  - clamtk
+  - git
+  - gksu
+  - google-chrome-stable
+  - grub2-splashimages
+  - openssh-server
+  - open-vm-tools
+  - pbis-open
+  - sublime-text
+
+
+
 
 common_rtpass: "$6$aMMGt4ZQuP.Q4$6PN1nHcqAUQjtDdBmPXM1o2CCJxVFl.wCbpyju5nlkBjGKZX9gokV4Sj7WA2aPU7IcIcx6GN9qqMcMxq8CdFp."
 common_fsuser: "deploy"

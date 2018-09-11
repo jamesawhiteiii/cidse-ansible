@@ -1,6 +1,6 @@
 ---
 
-- name: debian | add apt key
+- name: debian | add PBIS apt key
   apt_key:
     url: "{{apt_key}}"
     state: present
@@ -16,7 +16,10 @@
     update_cache: yes
 
 - name: debian | installing pbis-open from apt repo
-  apt: name=pbis-open update_cache=yes state=latest
+  apt: 
+    pkg: pbis-open 
+    update_cache: yes 
+    state: latest
 
 - name: debian | checking the current domain status
   shell: /opt/pbis/bin/lsa get-status | grep Netbios | awk '{print $3}' | grep "{{ ad_domain_netbios }}"

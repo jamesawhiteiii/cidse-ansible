@@ -24,7 +24,7 @@
 #
 # https://askubuntu.com/questions/112568/how-do-i-allow-a-non-default-user-to-use-serial-device-ttyusb0
 #
-# First touch the necessary file
+# Touch (create) the necessary file
 -
   file:
     path: /etc/udev/rules.d/50-myusb.rules
@@ -83,12 +83,12 @@
 ##########################################################################
 -
   apt:
-    state: present
+    state: latest
     pkg: "{{ item }}"
     update_cache: yes
   with_items:
     - "{{ common_packages }}"
-  name: debian | install common packages
+  name: debian | install CIDSE common packages
 
 ##########################################################################
 # Copy over end user wallpaper                                           #
