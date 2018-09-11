@@ -121,6 +121,7 @@
     weekday: 1
     job: "purge-old-kernels --keep 3 -qy"
     state: present
+    name: Weekly cleanup of old kernels
     cron_file: /etc/crontab
     user: root
   name: debian | purge old kernels cronjob setup
