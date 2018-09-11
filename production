@@ -10,22 +10,22 @@
 
 # Hierachy Map
 ####################################################
-1.0 workstations & servers | Subgroups
-    2.0 workstations | Subgroups
-        3.1 workstations_labs | Groups & Hostnames
-            lab_{owner}
-                hostnames
-        3.2 workstations_faculty | Groups & Hostnames
-            faculty_{owner}
-                hostnames
-        3.3 workstations_staff | Groups & Hostnames
-            staff_{dept}
-                hostnames
-    2.1 servers | Groups & Hostnames
-            servers_cidseit
-                hostnames
-            servers_shared
-                hostnames
+# 1.0 workstations & servers | Subgroups
+#    2.0 workstations | Subgroups
+#        3.1 workstations_labs | Groups & Hostnames
+#            lab_{owner}
+#                hostnames
+#        3.2 workstations_faculty | Groups & Hostnames
+#            faculty_{owner}
+#                hostnames
+#        3.3 workstations_staff | Groups & Hostnames
+#            staff_{dept}
+#                hostnames
+#    2.1 servers | Groups & Hostnames
+#            servers_cidseit
+#                hostnames
+#            servers_shared
+#                hostnames
 
 
 ####################################################
