@@ -6,9 +6,104 @@
 # Notes                                                                  #
 ##########################################################################
 # By default group of 'all' already exists
+# Always use fully qualifed hostnames
 
-[test]
-en4079715l.cidse.dhcp.asu.edu
-en4081443l.cidse.dhcp.asu.edu
+# Hierachy Map
+####################################################
+1.0 workstations & servers | Subgroups
+    2.0 workstations | Subgroups
+        3.1 workstations_labs | Groups & Hostnames
+            lab_{owner}
+                hostnames
+        3.2 workstations_faculty | Groups & Hostnames
+            faculty_{owner}
+                hostnames
+        3.3 workstations_staff | Groups & Hostnames
+            staff_{dept}
+                hostnames
+    2.1 servers | Groups & Hostnames
+        servers_cidseit
+            hostnames
+        servers_shared
+            hostnames
+
+
+####################################################
+# 1.0 workstations & servers | Subgroups           #
+####################################################
+# This section shouldn't require modification
+
+[workstations:children]
+workstations_labs
+workstations_faculty
+workstation_staff
+
+
+[servers:children]
+servers_cidseit
+servers_shared
+
+
+####################################################
+# 2.0 workstations | Subgroups                     #
+####################################################
+# When adding a new faculty or lab OU be sure it is listed in the appropriate group below
+
+[workstations_labs:children]
+#lab_{asurite/owner}
+lab_jrande32
+
+
+[workstations_faculty:children]
+#faculty_{asurite/owner}
+faculty_jrande32
+
+
+[workstations_staff:children]
+#staff_{dept}
+staff_advising
+
+
+####################################################
+# 2.1 servers | Groups & Hostnames                 #
+####################################################
+
+[servers_cidseit]
+# hostnames here
+
+
+[servers_shared]
+# hostnames here
+
+
+####################################################
+# 3.1 workstaions_labs | Groups & Hostnames        #
+####################################################
+# When adding a group here ensure it is added to 
+# EXAMPLE
+#[lab_{asurite}]
+# hostnames here 
+
+[lab_jrande32]
+en4109600l.cidse.dhcp.asu.edu
+
+
+####################################################
+# 3.2 workstations_faculty | Groups & Hostnames    #
+####################################################
+# EXAMPLE
+#[faculty_{asurite}]
+# hostnames here
+
+
+####################################################
+# 3.3 workstations_staff | Groups & Hostnames      #
+####################################################
+# EXAMPLE
+#[staff_{dept}]
+# hostnames here
+
+
+
 
 
