@@ -42,4 +42,4 @@
     line: "%{{ ad_domain_netbios }}\\\\\\{{ item }} ALL=(ALL:ALL) ALL"
     state: present
     validate: 'visudo -cf %s'
-  with_items: "{{ join-domain_sudogroups }}"
+  with_items: "{{ joindomain_sudogroups }}"

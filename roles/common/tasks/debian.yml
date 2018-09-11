@@ -76,7 +76,7 @@
 ##########################################################################
 - 
   apt: 
-    update_cache: true
+    cache_valid_time: 43200
     upgrade: dist
     autoremove: yes
   name: "debian | update and upgrade existing packages"
@@ -88,7 +88,7 @@
   apt:
     state: latest
     pkg: "{{ item }}"
-    update_cache: yes
+    cache_valid_time: 43200
   with_items:
     - "{{ common_packages }}"
   name: debian | install CIDSE common packages
