@@ -128,4 +128,5 @@
     job: "purge-old-kernels --keep 3 -qy"
     state: present
     cron_file: /etc/crontab
+    user: root
   name: debian | purge old kernels cronjob setup
