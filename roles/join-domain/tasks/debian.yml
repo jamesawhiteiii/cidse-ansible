@@ -49,7 +49,7 @@
     state: present
     validate: 'visudo -cf %s'
   with_items: 
-    - "{{ join-domain_sudogroups }}"
+    - '{{ join-domain_sudogroups }}'
 
 - name: debian | checking UserDomainPrefix
   shell: /opt/pbis/bin/config --show UserDomainPrefix | grep {{ pri_domain_name }}
