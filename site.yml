@@ -6,7 +6,8 @@
 ############################################################################################
 # INITIAL SETUP                                                                            #
 ############################################################################################
-
+-
+  hosts: all    		    # Defines what computers this is being run on
   vars_prompt:
   - name: "ad_user"
     prompt: "Fulton AD username"
