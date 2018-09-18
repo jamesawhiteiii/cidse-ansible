@@ -53,8 +53,8 @@ servers_shared
 
 [workstations_labs:children]
 #lab_{asurite/owner}
+lab_adoupe1
 lab_jrande32
-
 
 [workstations_faculty:children]
 #faculty_{asurite/owner}
@@ -83,6 +83,9 @@ lab_jrande32
 # EXAMPLE
 #[lab_{asurite}]
 # hostnames here 
+
+[lab_adoupe1]
+# hostnames here
 
 [lab_jrande32]
 en4109600l.cidse.dhcp.asu.edu

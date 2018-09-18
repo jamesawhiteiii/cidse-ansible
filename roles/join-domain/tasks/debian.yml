@@ -129,7 +129,7 @@
 #    Local_HomeDirTemplate.stdout_lines.1 != "%H/%U"
 #
 #- name: debian | requiring membership of security group
-#  command: '/opt/pbis/bin/config RequireMembershipOf "{{ ad_domain }}\\{{ domain_sudo_groups }}"'
+#  command: '/opt/pbis/bin/config RequireMembershipOf "{{ ad_domain }}\\{{ joindomain_logingroups }}"'
 #  when:
-#    RequireMembershipOf.stdout_lines.1 != "{{ ad_domain }}\\{{ domain_sudo_groups }}"
+#    RequireMembershipOf.stdout_lines.1 != "{{ ad_domain }}\\{{ joindomain_logingroups }}"
 

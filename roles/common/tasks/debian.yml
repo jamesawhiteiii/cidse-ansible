@@ -63,12 +63,6 @@
    filename: "{{ item.file }}"
  with_items:
    - "{{ common_repos }}"
-#   - repo: https://download.sublimetext.com/
-#     add: apt/stable/
-#     file: sublime
-#   - repo: http://dl.google.com/linux/chrome/deb/
-#     add: stable main
-#     file: google-chrome
  name: debian | add common repositories
 
 ##########################################################################

@@ -11,3 +11,4 @@ joindomain_sudogroups: "cidse-it"                               # define AD Grou
 pri_domain_name: "ASUAD"                                         # defines primary domain name, was previously unused in tasks files, now am using for prefix
 apt_key: "http://repo.pbis.beyondtrust.com/apt/RPM-GPG-KEY-pbis"
 yum_key: "http://repo.pbis.beyondtrust.com/yum/RPM-GPG-KEY-pbis"
+# joindomain_logingroups: ""                                      # Used to restrict logins to machines, currently commented out in the tasks file as well
