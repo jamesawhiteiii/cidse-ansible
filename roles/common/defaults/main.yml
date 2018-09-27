@@ -7,6 +7,7 @@ common_packages:
   - cifs-utils
   - clamav-daemon
   - clamtk
+  - curl
   - git
   - gksu
   - google-chrome-stable
