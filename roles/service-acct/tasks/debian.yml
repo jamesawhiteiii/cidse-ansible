@@ -7,10 +7,10 @@
 # Create the service account                                             #
 ##########################################################################
 - 
-  name: "debian | provision CIDSE Ansible service account"
-  user: 
-    groups: sudo
-    name: "{{ serviceacct_user }}"
-    password: "{{ serviceacct_pass }}"
-    state: present
-    update_password: always
+ user: 
+   groups: sudo
+   name: "{{ serviceacct_user }}"
+   password: "{{ serviceacct_pass }}"
+   state: present
+   update_password: always
+ name: "debian | provision CIDSE Ansible service account"
