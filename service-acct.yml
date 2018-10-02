@@ -6,6 +6,7 @@
   become: true		      # Sudo all commands in the playbook
   hosts: all    		    # Defines what computers this is being run on
   name: service-acct    # Name of the playbook
+  strategy: debug
   remote_user: techs    # Defined here since this is a separate playbook for initial provisioning
                         # You will still need to add the password at runtime
 
