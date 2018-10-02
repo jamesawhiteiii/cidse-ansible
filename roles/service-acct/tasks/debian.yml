@@ -10,7 +10,7 @@
  user:
    groups: adm, cdrom, sudo, dip, plugdev, lpadmin, sambashare
    name: "{{ serviceacct_user }}"
-   password: "{{ serviceacct_pass }}"
+   password: "{{ serviceacct_pass | password_hash('sha512') }}"
    state: present
    update_password: always
    home: /home/sparky
