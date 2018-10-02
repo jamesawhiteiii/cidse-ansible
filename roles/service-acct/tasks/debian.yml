@@ -7,7 +7,7 @@
 # Create the service account                                             #
 ##########################################################################
 -
- user: 
+ user:
    groups: sudo
    name: "{{ serviceacct_user }}"
    password: "{{ serviceacct_pass }}"
