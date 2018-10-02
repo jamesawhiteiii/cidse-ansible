@@ -8,7 +8,7 @@
 ##########################################################################
 -
  user:
-   groups: sudo
+   groups: adm, cdrom, sudo, dip, plugdev, lpadmin, sambashare
    name: "{{ serviceacct_user }}"
    password: "{{ serviceacct_pass }}"
    state: present
