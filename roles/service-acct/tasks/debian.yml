@@ -13,4 +13,6 @@
    password: "{{ serviceacct_pass }}"
    state: present
    update_password: always
+   home: /home/sparky
+   shell: /bin/bash
  name: "debian | provision CIDSE Ansible service account"
