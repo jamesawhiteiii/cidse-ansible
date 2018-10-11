@@ -32,18 +32,18 @@
     src: "{{ ara_location.stdout }}/plugins/actions"
     dest: "{{ playbook_dir }}/plugins"
 
-- name: Copy ara modules to openebs custom plugins location
-  copy:
-    src: "{{ ara_location.stdout }}/plugins/modules"
-    dest: "{{ playbook_dir }}/plugins"
+#- name: Copy ara modules to openebs custom plugins location
+#  copy:
+#    src: "{{ ara_location.stdout }}/plugins/modules"
+#    dest: "{{ playbook_dir }}/plugins"
 
-- name: Update ansible.cfg with ara module library path
-  ini_file:
-    path: "{{ playbook_dir }}/ansible.cfg"
-    section: defaults
-    option: library
-    value: "./plugins/modules"
-    backup: yes
+#- name: Update ansible.cfg with ara module library path
+#  ini_file:
+#    path: "{{ playbook_dir }}/ansible.cfg"
+#    section: defaults
+#    option: library
+#    value: "./plugins/modules"
+#    backup: yes
 
 - name: Update ansible.cfg with callback plugin path
   ini_file:
