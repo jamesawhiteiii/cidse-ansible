@@ -1,7 +1,7 @@
 - name: Install ara apt packages
   apt:
     state: present
-    name: u"{{ ara_apt_packages }}"
+    name: "{{ ara_apt_packages }}"
   become: true 
   delegate_to: 127.0.0.1
 
