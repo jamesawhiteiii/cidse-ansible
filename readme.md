@@ -86,6 +86,10 @@ staging                   # inventory file for staging or testing
 
 ansible.cfg               # specifies ansible configuration (takes precendence over the file in /etc/ansible)
 
+vault_credentials.txt        # Ignored by Git, create this file and specify the Ansible Vault password
+ssh_service_credentials.txt  # Ignored by Git, create this file and specify the SSH service user and password for Ansible
+ssh_techs_credentials.txt    # Ignored by Git, create this file and specift the techs account password (Used to provision service account)
+
 group_vars/
    group1                 # here we assign variables to particular groups of machines as defined in inventory
    group2                 # ""
