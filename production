@@ -105,15 +105,6 @@ ubuntu-test2.cidse.dhcp.asu.edu
 # EXAMPLE
 #[staff_{dept}]
 # hostnames here
-<<<<<<< HEAD
 
 [staff_cidseit]
 en4061283l.cidse.dhcp.asu.edu
-=======
-[staff_cidseit]
-en4061283l.cidse.dhcp.asu.edu
-
-
-
-
->>>>>>> dev
