@@ -62,6 +62,7 @@ lab_jrande32
 
 [workstations_staff:children]
 #staff_{dept}
+staff_cidseit
 
 
 ####################################################
@@ -105,7 +106,8 @@ ubuntu-test2.cidse.dhcp.asu.edu
 # EXAMPLE
 #[staff_{dept}]
 # hostnames here
-
+[staff_cidseit]
+en4061283l.cidse.dhcp.asu.edu
 
 
 
