@@ -62,7 +62,7 @@ lab_jrande32
 
 [workstations_staff:children]
 #staff_{dept}
-
+staff_cidseit
 
 ####################################################
 # 2.1 servers | Groups & Hostnames                 #
@@ -106,7 +106,5 @@ ubuntu-test2.cidse.dhcp.asu.edu
 #[staff_{dept}]
 # hostnames here
 
-
-
-
-
+[staff_cidseit]
+en4061283l.cidse.dhcp.asu.edu
