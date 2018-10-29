@@ -56,6 +56,7 @@ servers_shared
 lab_adoupe1
 lab_jrande32
 lab_ssriva43
+lab_sgil4
 
 [workstations_faculty:children]
 #faculty_{asurite/owner}
@@ -89,7 +90,11 @@ staff_cidseit
 # hostnames here
 
 [lab_jrande32]
+# hostnames here
 ubuntu-test2.cidse.dhcp.asu.edu
+
+[lab_sgil4]
+# hostnames here
 
 [lab_ssriva43]
 en4110001l.cidse.dhcp.asu.edu
