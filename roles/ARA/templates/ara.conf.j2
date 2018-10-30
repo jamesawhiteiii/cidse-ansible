@@ -6,7 +6,7 @@
     LogLevel warn
     CustomLog /var/log/httpd/ara-access.log combined
 
-    WSGIDaemonProcess ara user=apache group=apache processes=4 threads=1
+    WSGIDaemonProcess ara user=www-data group=www-data processes=4 threads=1
     WSGIScriptAlias / /var/www/ara/ara-wsgi
 
     SetEnv ANSIBLE_CONFIG /var/www/ara/ansible.cfg
