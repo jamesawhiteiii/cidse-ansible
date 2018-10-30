@@ -12,5 +12,6 @@ ara_pip_packages:
   - tox
   - ara 
 
-ara_webserver_port: 9191
-ara_webserver_ip: 0.0.0.0
+ara_apache_packages:
+  - apache2
+  - libapache2-mod-wsgi

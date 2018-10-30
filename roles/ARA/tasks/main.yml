@@ -2,63 +2,68 @@
   apt:
     state: present
     name: "{{ ara_apt_packages }}"
-  become: true 
-  delegate_to: 127.0.0.1
+#  become: true 
+#  delegate_to: 127.0.0.1
 
 - name: Install ara pip packages
   pip:
     state: present
     name: "{{ ara_pip_packages }}"
-  become: true 
-  delegate_to: 127.0.0.1
+#  become: true 
+#  delegate_to: 127.0.0.1
 
-- name: Get ara location
+- name: Get ara root dir location
   command: python -m ara.setup.path
-#  command: python -c "import os,ara; print(os.path.dirname(ara.__file__))"
   register: ara_location  
 
-- name: Create plugins folder in playbook directory if it doesn't exist
-  file:
-    path: "{{ playbook_dir }}/plugins/callback"
-    recurse: yes
-    state: directory
+- name: Get ara callback plugins path
+  command: python -m ara.setup.callback_plugins
+  register: ara_cb_plugins_location  
 
-- name: Copy ara callback plugin to openebs custom plugins location
-  copy: 
-    src: "{{ ara_location.stdout }}/plugins/callbacks/"  
-    dest: "{{ playbook_dir }}/plugins/callback" 
+- name: Get ara action plugins path
+  command: python -m ara.setup.action_plugins
+  register: ara_a_plugins_location 
 
-- name: Copy ara action plugins to openebs custom plugins location
-  copy:
-    src: "{{ ara_location.stdout }}/plugins/actions/"
-    dest: "{{ playbook_dir }}/plugins"
+- name: Get ara library path
+  command: python -m ara.setup.library
+  register: ara_library_location 
 
-#- name: Copy ara modules to openebs custom plugins location
+#- name: Create plugins folder in playbook directory if it doesn't exist
+#  file:
+#    path: "{{ playbook_dir }}/plugins/callback"
+#    recurse: yes
+#    state: directory
+
+#- name: Copy ara callback plugin to openebs custom plugins location
+#  copy: 
+#    src: "{{ ara_location.stdout }}/plugins/callbacks/"  
+#    dest: "{{ playbook_dir }}/plugins/callback" 
+
+#- name: Copy ara action plugins to openebs custom plugins location
 #  copy:
-#    src: "{{ ara_location.stdout }}/plugins/modules"
+#    src: "{{ ara_location.stdout }}/plugins/actions/"
 #    dest: "{{ playbook_dir }}/plugins"
-
-#- name: Update ansible.cfg with ara module library path
-#  ini_file:
-#    path: "{{ playbook_dir }}/ansible.cfg"
-#    section: defaults
-#    option: library
-#    value: "./plugins/modules"
-#    backup: yes
 
 - name: Update ansible.cfg with callback plugin path
   ini_file:
     path: "{{ playbook_dir }}/ansible.cfg"
     section: defaults
     option: callback_plugins
-    value: "./plugins/callback"
+    value: "{{ ara_cb_plugins_location.stdout }}"
 
 - name: Update ansible.cfg with ara action plugins path
   ini_file:
     path: "{{ playbook_dir }}/ansible.cfg"
     section: defaults
     option: action_plugins
-    value: "./plugins/actions"
+    value: "{{ ara_a_plugins_location.stdout }}"
+
+- name: Update ansible.cfg with ara library path
+  ini_file:
+    path: "{{ playbook_dir }}/ansible.cfg"
+    section: defaults
+    option: library
+    value: "{{ ara_library_location.stdout }}"
 
 - name: Update ansible.cfg with ara notification callback
   ini_file:
@@ -67,22 +72,59 @@
     option: notification_callback 
     value: "ara"
 
-- name: Get ara-manage binary location
-  command: which ara-manage
-  register: ara_manage_binary
+- name: Install apache
+  apt:
+    state: present
+    name: "{{ ara_apache_packages }}"
+  become: true 
 
-- name: Start ara webserver on localhost
-  shell: >
-    nohup {{ ara_manage_binary.stdout }} 
-    runserver
-    -h {{ ara_webserver_ip }} 
-    -p {{ ara_webserver_port }} 
-    > {{ ansible_env.HOME }}/ara-manage.log
-    2>&1
-    &
-  args:
-    executable: /bin/bash
+- name: Enable and start apache
+  systemd:
+    name: apache2
+    enabled: yes
+    state: started
 
-- name: Display ara UI URL  
-  debug: 
-    msg: "Access playbook records at http://{{ ara_webserver_ip }}:{{ ara_webserver_port }}"
+# Create the directory for Ansible and ARA
+# This directory is where we will store the files that Apache will need to read and write to.
+- name: Mkdir for Ansible/ara for apache
+  file:
+    path: "/var/www/ara"
+    recurse: yes
+    state: directory
+
+# The location where ara-wsgi is installed depends on how you installed ARA and the distribution you are running. You can use 'which' to find where it is located
+# Salty old linux admin warning: Not all systems support 'which', you may also need to utilize 'command -v'
+- name: Get ARA WSGI location
+  command: which ara-wsgi
+  register: ara_wsgi_location  
+
+# ARA provides a WSGI script when it is installed: ara-wsgi. We need to copy it to the directory we just created, /var/www/ara.
+- name: Copy ARA WSGI to web dir
+  copy:
+    src: "{{ ara_wsgi_location.stdout }}"
+    dest: "/var/www/ara/"
+
+- name: Create Ansible/ARA configuration
+# The defaults provided by ARA and Ansible are not suitable for a use case where we are deploying with Apache. We need to provide different settings
+# For additional parameters, such as the database location or backend, look at the configuration documentation
+# https://ara.readthedocs.io/en/stable/configuration.html#configuration-parameter-ara
+  copy:
+    src: "{{ playbook_dir }}/files/ansible.cfg"
+    dest: "/var/www/ara/ansible.cfg"
+    
+# Make sure everything is owned by Apache so it can read and write to the directory:
+# chown -R www-data:www-data /var/www/ara
+- name: Apache file permissions
+  file:
+    path: /var/www/ara
+    owner: www-data
+    group: www-data
+    recurse: yes
+
+# Set up the Apache virtual host at /etc/apache2/sites-available/ara.conf
+# Restart apache if needed
+- name: Apache virtual host config
+  template: 
+    src: ara.conf.j2
+    dest: /etc/apache2/sites-available/ara.conf
+    notify: "restart apache"
