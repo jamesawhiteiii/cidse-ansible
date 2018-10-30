@@ -26,7 +26,7 @@ common_repos:
    - repo: https://download.sublimetext.com/
      add: apt/stable/
      file: sublime-text
-   - repo: http://dl.google.com/linux/chrome/deb/
+   - repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/
      add: stable main
      file: google-chrome
    - repo: http://repo.pbis.beyondtrust.com/apt/
