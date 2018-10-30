@@ -21,4 +21,4 @@ ara_dns_suffix: "cidse.dhcp.asu.edu"
 
 ara_root_www_dir: "/var/www/ara/.ara"
 ara_www_dir: "/var/www/ara/.ara"
-ara_db_dir: "sqlite:///var/www/ara/.ara/ansible.sqlite"
+ara_db_dir: "sqlite:////var/www/ara/.ara/ansible.sqlite"
