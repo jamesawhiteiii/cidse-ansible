@@ -3,4 +3,4 @@
   service: 
     name: apache
     state: restarted
-    listen: "restart apache"
+  listen: "restart apache"
