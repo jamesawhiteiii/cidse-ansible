@@ -1,10 +1,9 @@
 <VirtualHost *:80>
-    # Replace ServerName by your hostname
     ServerName {{ ansible_hostname }}.{{ ara_dns_suffix }}
 
-    ErrorLog /var/log/httpd/ara-error.log
+    ErrorLog /var/log/apache2/ara-error.log
     LogLevel warn
-    CustomLog /var/log/httpd/ara-access.log combined
+    CustomLog /var/log/apache2/ara-access.log combined
 
     WSGIDaemonProcess ara user=www-data group=www-data processes=4 threads=1
     WSGIScriptAlias / /var/www/ara/ara-wsgi
