@@ -1,5 +1,4 @@
 ---
-handlers:
 - name: restart apache
   service: 
     name: apache
