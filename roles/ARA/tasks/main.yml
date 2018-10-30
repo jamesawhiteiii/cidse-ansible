@@ -113,6 +113,8 @@
     dest: "/var/www/ara/ansible.cfg"
     
 # Make sure everything is owned by Apache so it can read and write to the directory
+# Giving generous permissions since no one else has access to this machine
+# and because whatever user is running Ansible needs permission to the .ara dir
 - name: Apache file permissions
   file:
     path: /var/www/ara
