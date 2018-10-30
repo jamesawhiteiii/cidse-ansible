@@ -118,6 +118,7 @@
     path: /var/www/ara
     owner: www-data
     group: www-data
+    mode: 0777
     recurse: yes
 
 # Set up the Apache virtual host at /etc/apache2/sites-available/ara.conf
