@@ -127,4 +127,4 @@
   template: 
     src: ara.conf.j2
     dest: /etc/apache2/sites-available/ara.conf
-    notify: "restart apache"
+  notify: "restart apache"

@@ -1,6 +1,6 @@
 <VirtualHost *:80>
     # Replace ServerName by your hostname
-    ServerName "{{ ansible_fqdn }}"
+    ServerName {{ ansible_fqdn }}
 
     ErrorLog /var/log/httpd/ara-error.log
     LogLevel warn
