@@ -112,8 +112,7 @@
     src: ansible.cfg
     dest: "/var/www/ara/ansible.cfg"
     
-# Make sure everything is owned by Apache so it can read and write to the directory:
-# chown -R www-data:www-data /var/www/ara
+# Make sure everything is owned by Apache so it can read and write to the directory
 - name: Apache file permissions
   file:
     path: /var/www/ara
@@ -128,3 +127,6 @@
     src: ara.conf.j2
     dest: /etc/apache2/sites-available/ara.conf
   notify: "restart apache"
+
+- name: Enable ara site
+  command: a2ensite ara
