@@ -2,15 +2,15 @@
   apt:
     state: present
     name: "{{ ara_apt_packages }}"
-    become: true 
-    delegate_to: 127.0.0.1
+  become: true 
+  delegate_to: 127.0.0.1
 
 - name: Install ara pip packages
   pip:
     state: present
     name: "{{ ara_pip_packages }}"
-    become: true 
-    delegate_to: 127.0.0.1
+  become: true 
+  delegate_to: 127.0.0.1
 
 - name: Get ara root dir location
   command: python -m ara.setup.path
