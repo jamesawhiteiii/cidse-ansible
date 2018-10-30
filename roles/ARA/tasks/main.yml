@@ -109,7 +109,7 @@
 # For additional parameters, such as the database location or backend, look at the configuration documentation
 # https://ara.readthedocs.io/en/stable/configuration.html#configuration-parameter-ara
   copy:
-    src: "{{ playbook_dir }}/files/ansible.cfg"
+    src: ansible.cfg
     dest: "/var/www/ara/ansible.cfg"
     
 # Make sure everything is owned by Apache so it can read and write to the directory:
