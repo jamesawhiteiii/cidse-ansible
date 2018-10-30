@@ -2,14 +2,12 @@
   apt:
     state: present
     name: "{{ ara_apt_packages }}"
-# become: true 
   delegate_to: 127.0.0.1
 
 - name: Install ara pip packages
   pip:
     state: present
-    name: "{{ ara_pip_packages }}"
-#  become: true 
+    name: "{{ ara_pip_packages }}" 
   delegate_to: 127.0.0.1
 
 - name: Get ara root dir location
@@ -72,6 +70,20 @@
     option: notification_callback 
     value: "ara"
 
+- name: Update ansible.cfg with ara www dir
+  ini_file:
+    path: "{{ playbook_dir }}/ansible.cfg"
+    section: ara
+    option: dir
+    value: "{{ ara_www_dir }}"
+
+- name: Update ansible.cfg with ara database dir
+  ini_file:
+    path: "{{ playbook_dir }}/ansible.cfg"
+    section: ara
+    option: database
+    value: "{{ ara_db_dir }}"
+
 - name: Install apache
   apt:
     state: present
@@ -88,7 +100,7 @@
 # This directory is where we will store the files that Apache will need to read and write to.
 - name: Mkdir for Ansible/ara for apache
   file:
-    path: "/var/www/ara"
+    path: "{{ ara_root_www_dir }}"
     recurse: yes
     state: directory
 
@@ -102,7 +114,7 @@
 - name: Copy ARA WSGI to web dir
   copy:
     src: "{{ ara_wsgi_location.stdout }}"
-    dest: "/var/www/ara/"
+    dest: "{{ ara_root_www_dir }}"
 
 - name: Create Ansible/ARA configuration
 # The defaults provided by ARA and Ansible are not suitable for a use case where we are deploying with Apache. We need to provide different settings
@@ -110,14 +122,14 @@
 # https://ara.readthedocs.io/en/stable/configuration.html#configuration-parameter-ara
   copy:
     src: ansible.cfg
-    dest: "/var/www/ara/ansible.cfg"
+    dest: "{{ ara_root_www_dir }}/ansible.cfg"
     
 # Make sure everything is owned by Apache so it can read and write to the directory
 # Giving generous permissions since no one else has access to this machine
 # and because whatever user is running Ansible needs permission to the .ara dir
 - name: Apache file permissions
   file:
-    path: /var/www/ara
+    path: "{{ ara_root_www_dir }}"
     owner: www-data
     group: www-data
     mode: 0777
