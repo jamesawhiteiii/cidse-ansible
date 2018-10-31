@@ -77,6 +77,11 @@ staff_cidseit
 [servers_shared]
 # hostnames here
 
+# msarwat
+en4119507l.cidse.dhcp.asu.edu
+en4119608l.cidse.dhcp.asu.edu
+en4119509l.cidse.dhcp.asu.edu
+en4119510l.cidse.dhcp.asu.edu
 
 ####################################################
 # 3.1 workstaions_labs | Groups & Hostnames        #
