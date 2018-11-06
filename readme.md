@@ -3,14 +3,15 @@
 This file details this directory/repo as well as some basics on how to use Ansible in our environment. Should you
 not find the answer you need in this readme you should consult the offical Ansible documentation. It is thorough and
 includes excellent examples as well as discussion of best practices. In addition to understanding Ansible you should also
-understand the basics of Git source control.
+understand the basics of Git source control. To read more on setting up the CIDSE Ansible environment see the environment setup readme file.
 
 
 ## Basic Terminology
 
-**Playbook** - Combination of inventory and roles (combine a list of machines and give them a purpose)  
-**Role** - As shown in the directory structure below, a role is settings, configuration files, packages etc for a specific purpose  
-**Task** - These are individual script-like items in a role, for example you might install a package or verify a file exists
+**Playbook** - Combination of inventory and roles (give a list of machines a role [aka purpose])  
+**Role** - As shown in the directory structure below, a role represents settings, configuration files, packages etc for a specific purpose (eg: db or webserver)  
+**Task** - These are individual script-like items in a role, for example you might install a package, verify a file exists, or edit a config file  
+**Inventory** - An inventory file is a flat file that serves as a sort of database, it contains groups and hostnames. Groups can contain other groups or hosts
 
 ## Running a Playbook & Commands 
 
@@ -18,13 +19,20 @@ To run a playbook ensure your present working directory is the main 'ansible' fo
 have the latest version of all the Ansible files before running them against any hosts.    
 The syntax for a playbook command is:
 ```
-    ansible-playbook -i <inventoryfile> <host/group> <playbookname.yml> -K
+    ansible-playbook -i <inventoryfile> <host/group> <playbookname.yml> -Kk --ask-vault-pass
 ```
 
--i -- specifies which inventory file to lookup hosts / host groups in  
--K -- asks for the sudo password before starting the playbook  
--k -- asks for the SSH password before starting (used to connect with user account/password and for debugging issues with SSH connectivity)  
--u -- allows you to pass a user to SSH as [Example: *ansible-playbook ... -u techs*]
+Useful options to be aware of:
+| Option           | Use                                                                          |
+|------------------|------------------------------------------------------------------------------|
+| --ask-vault-pass | Prompts you for the vault password when running a command                    |
+| -e               | Allows you to pass extra variables to Ansible for use in command or in tasks |
+| -i               | Use this to specify an inventory file                                        |
+| -k               | Prompts you for SSH password                                                 |
+| -K               | Prompts you for sudo/become password                                         |
+| -u               | Allows you to specify the SSH username                                       |
+
+As a quick note: Ansible uses 'become' in place of the word 'sudo'. Direct sudo usage in Ansible is deprecated. You should always use 'become' and remember it works exactly as 'sudo' would.
 
 #### Ad-hoc Commands
 
@@ -43,6 +51,11 @@ be useful in troubleshooting connectivtiy issues with machines.
 ## Current Roles Overview
 
 ```
+ARA:
+    Sets up ARA Ansible Runtime Analysis for the main Ansible machine
+    This role is not part of the site.yml master playbook
+    Used only for the setup of the cidse-ansible machine
+
 Common:
    Enables serial over USB for all users
    Adds repos
@@ -73,6 +86,10 @@ Landscape:
 Join-Domain:
     Checks current status
     Binds to AD if not already bound
+
+Service-Acct:
+    Sets up a local use account with admin permissions to only be used by Ansible
+    The user and pass are vaulted in a group_vars file
 ```
 	
 
@@ -130,3 +147,44 @@ roles/
     monitoring/           # ""
     fooapp/               # ""
 ```
+
+## Ansible Vault
+
+Ansible Vault is a method for encrypting files that allows Ansible to parse and read them during execution. It also allows us to upload credentials as part of Git commits by encrypting the entire contents of files. Below is a refernce of commands used to handle 'vaulted' files within the Ansible repo here. The below section is copied from the Ansible documentation on using the Vault feature.
+
+#### Creating Encrypted Files
+To create a new encrypted data file, run the following command:
+
+``` ansible-vault create foo.yml ```
+
+First you will be prompted for a password. The password used with vault currently must be the same for all files you wish to use together at the same time. After providing a password, the tool will launch whatever editor you have defined with $EDITOR, and defaults to vi (before 2.1 the default was vim). Once you are done with the editor session, the file will be saved as encrypted data.
+
+The default cipher is AES (which is shared-secret based).
+
+#### Editing Encrypted Files
+To edit an encrypted file in place, use the ansible-vault edit command. This command will decrypt the file to a temporary file and allow you to edit the file, saving it back when done and removing the temporary file:
+
+``` ansible-vault edit foo.yml ```
+
+#### Rekeying Encrypted Files
+Should you wish to change your password on a vault-encrypted file or files, you can do so with the rekey command:
+
+``` ansible-vault rekey foo.yml bar.yml baz.yml ```
+
+This command can rekey multiple data files at once and will ask for the original password and also the new password.
+
+#### Encrypting Unencrypted Files
+If you have existing files that you wish to encrypt, use the ansible-vault encrypt command. This command can operate on multiple files at once:
+
+``` ansible-vault encrypt foo.yml bar.yml baz.yml ```
+
+#### Decrypting Encrypted Files
+If you have existing files that you no longer want to keep encrypted, you can permanently decrypt them by running the ansible-vault decrypt command. This command will save them unencrypted to the disk, so be sure you do not want ansible-vault edit instead:
+
+``` ansible-vault decrypt foo.yml bar.yml baz.yml ```
+
+#### Viewing Encrypted Files
+
+If you want to view the contents of an encrypted file without editing it, you can use the ansible-vault view command:
+
+``` ansible-vault view foo.yml bar.yml baz.yml ```
