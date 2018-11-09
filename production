@@ -142,6 +142,11 @@ en4146344l.cidse.dhcp.asu.edu
 en4146411l.cidse.dhcp.asu.edu
 en4146412l.cidse.dhcp.asu.edu
 
+[lab_ywang354]
+#hostnames here
+en4146399l.cidse.dhcp.asu.edu
+
+
 
 ####################################################
 # 3.2 workstations_faculty | Groups & Hostnames    #
