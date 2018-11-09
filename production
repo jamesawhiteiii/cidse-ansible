@@ -90,6 +90,17 @@ en4119510l.cidse.dhcp.asu.edu
 # EXAMPLE
 #[lab_{asurite}]
 # hostnames here 
+####################################################
+[lab_abanerj3]
+# hostnames here
+
+
+[lab_adengi]
+# hostnames here
+
+
+[lab_adokhanc]
+# hostnames here
 
 
 [lab_adoupe1]
@@ -99,6 +110,82 @@ en4146148l.cidse.dhcp.asu.edu
 en4146149l.cidse.dhcp.asu.edu
 en4146150l.cidse.dhcp.asu.edu
 en4146152l.cidse.dhcp.asu.edu
+
+[lab_agel1]
+# hostname here
+
+
+[lab_arescob2]
+# hostname here
+
+
+[lab_aricha]
+# hostname here
+
+
+[lab_ashriva6]
+# hostname here
+
+[lab_atdcm]
+# hostname here
+
+
+[lab_bazzi]
+# hostname here
+
+[lab_bli24]
+# hostname here
+
+
+[lab_bnelson]
+# hostname here
+
+
+
+[lab_calliss]
+# hostname here
+
+
+
+
+[lab_candan]
+# hostname here
+
+
+
+
+[lab_caroleje]
+# hostname here
+
+
+
+
+
+[lab_cbaral]
+# hostname here
+
+
+
+
+
+
+[lab_cbryan16]
+# hostname here
+
+
+
+
+[lab_aricha]
+# hostname here
+
+
+
+
+
+
+
+
+
 
 
 [lab_hdavulcu]
