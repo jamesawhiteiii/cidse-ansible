@@ -174,26 +174,480 @@ en4146152l.cidse.dhcp.asu.edu
 
 
 
+[lab_cchung20]
+# hostname here
 
-[lab_aricha]
+
+[lab_ccolbou]
+# hostname here
+
+
+
+[lab_ckcheng]
+# hostname here
+
+
+
+[lab_cljenn]
+# hostname here
+
+
+
+[lab_collofel]
+# hostname here
+
+
+
+[lab_crubiome]
+# hostname here
+
+
+
+[lab_dboscovi]
+# hostname here
+
+
+
+[lab_dcalliss]
+# hostname here
+
+
+
+[lab_dhuang8]
+# hostname here
+
+
+
+
+[lab_drmccarv]
+# hostname here
+
+
+
+[lab_dshunk]
+# hostname here
+
+
+
+[lab_eawalke1]
+# hostname here
+
+
+
+[lab_ehassler]
+# hostname here
+
+
+
+[lab_esenturk]
+# hostname here
+
+
+
+[lab_fengju]
+# hostname here
+
+
+
+[lab_fren5]
+# hostname here
+
+
+
+[lab_gahn1]
+# hostname here
+
+
+
+[lab_gfaineko]
+# hostname here
+
+
+
+
+[lab_gpedriel]
+# hostname here
+
+
+
+
+[lab_gxue1]
+# hostname here
+
+
+
+
+[lab_halla]
+# hostname here
+
+
+
+[lab_hbenamor]
+# hostname here
+
+
+[lab_hdavulcu]
+# hostname here
+en4119614l.cidse.dhcp.asu.edu
+
+
+
+[lab_hkdv1]
+# hostname here
+
+
+
+[lab_hsarjou]
+# hostname here
+
+
+
+[lab_htong6]
+# hostname here
+
+
+
+
+[lab_huanliu]
+# hostname here
+
+
+
+[lab_hyan46]
+# hostname here
+
+
+
+[lab_iacfks]
+# hostname here
+
+
+
+[lab_ihsiao1]
+# hostname here
+
+
+
+[lab_jbalasoo]
+# hostname here
+
+
+
+[lab_jcaviede]
+# hostname here
+
+
+
+[lab_jfklein]
+# hostname here
+
+
+
+
+[lab_jiayuel1]
+# hostname here
+
+
+
+
+[lab_jingruih]
+# hostname here
+
+
+
+[lab_jlee89]
+# hostname here
+
+
+
+[lab_jli09]
+# hostname here
+
+
+
+[lab_jmjuare]
+# hostname here
+
+
+
+
+[lab_jrande32]
+# hostnames here
+ubuntu-test2.cidse.dhcp.asu.edu
+
+
+
+
+[lab_jsefair]
+# hostname here
+
+
+
+[lab_jselgrad]
+# hostname here
+
+
+
+
+[lab_jshakari]
 # hostname here
 
 
 
 
 
+[lab_jwetzel4]
+# hostname here
+
+
+
+[lab_kburger2]
+# hostname here
+
+
+
+[lab_kgrover3]
+# hostname here
+
+
+
+[lab_kvanlehn]
+# hostname here
+
+
+
+[lab_lchatti]
+# hostname here
 
 
 
 
+[lab_light]
+# hostname here
 
 
-[lab_hdavulcu]
-en4119614l.cidse.dhcp.asu.edu
 
-[lab_jrande32]
-# hostnames here
-ubuntu-test2.cidse.dhcp.asu.edu
+[lab_lyafeng]
+# hostname here
+
+
+
+[lab_mbodagh]
+# hostname here
+
+
+
+
+[lab_mclough]
+# hostname here
+
+
+
+
+[lab_msarwat]
+# hostname here
+
+
+
+[lab_mutsumi]
+# hostname here
+
+
+[lab_mzhao38]
+# hostname here
+
+[lab_navabi]
+# hostname here
+
+[lab_nongye]
+# hostname here
+
+
+
+[lab_partha]
+# hostname here
+
+
+[lab_pmirchan]
+# hostname here
+
+
+[lab_pshakari]
+# hostname here
+
+
+[lab_rafleisc]
+# hostname here
+
+
+[lab_raskin]
+# hostname here
+
+
+[lab_ratkins1]
+# hostname here
+
+
+
+[lab_renev]
+# hostname here
+
+
+
+[lab_rmacieje]
+# hostname here
+
+
+[lab_rpan1]
+# hostname here
+
+
+
+[lab_rsamala]
+# hostname here
+
+
+
+[lab_rtadayon]
+# hostname here
+
+
+
+
+[lab_runger]
+# hostname here
+
+
+
+[lab_scheema3]
+# hostname here
+
+
+
+[lab_sgil4]
+# hostname here
+
+
+
+[lab_skang41]
+# hostname here
+
+
+
+[lab_skgupta]
+# hostname here
+
+
+[lab_sparry2]
+# hostname here
+
+
+
+[lab_ssriva43]
+# hostname here
+
+
+
+[lab_ssyau]
+# hostname here
+
+
+
+[lab_subbarao]
+# hostname here
+
+
+[lab_svrudhul]
+# hostname here
+
+
+
+[lab_syrotiuk]
+# hostname here
+
+
+
+[lab_tbao5]
+# hostname here
+
+
+
+[lab_tjbaron]
+# hostname here
+
+
+
+[lab_tmcdani]
+# hostname here
+
+
+
+[lab_tpavlic]
+# hostname here
+
+
+
+[lab_twu02]
+# hostname here
+
+
+
+
+[lab_vrmohan1]
+# hostname here
+
+
+
+
+[lab_xfeng13]
+# hostname here
+
+
+
+
+[lab_yansho1]
+# hostname here
+
+
+
+
+[lab_ychen10]
+# hostname here
+
+
+
+
+[lab_ykobaya]
+# hostname here
+
+
+
+[lab_ylee1]
+# hostname here
+
+
+
+[lab_ywang354]
+# hostname here
+
+
+
+
+[lab_yyang305]
+# hostname here
+
+
+
+
+[lab_yzhan442]
+# hostname here
+
+
+
+[lab_zzhao30]
+# hostname here
+
+
 
 
 [lab_sgil4]
