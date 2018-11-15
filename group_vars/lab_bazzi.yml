@@ -1,0 +1,7 @@
+---
+# Define all the sudoer groups to add for the Ansible inventory group of lab_adoupe1
+# The name of this file must match exactly with the name of the group in the Ansible inventory file
+joindomain_sudogroups:
+  - "cidse-it"
+  - "CIDSE-bazzi_Lab_Admins"
+  
