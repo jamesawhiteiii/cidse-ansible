@@ -570,7 +570,7 @@ en4166270l.cidse.dhcp.asu.edu
 # hostname here
 en4119695l.cidse.dhcp.asu.edu
 10.152.85.140
-
+en4102914l.cidse.dhcp.asu.edu
 
 [lab_svrudhul]
 # hostname here
@@ -650,8 +650,7 @@ en4119695l.cidse.dhcp.asu.edu
 
 [lab_yyang305]
 # hostname here
-
-
+en4166079l.cidse.dhcp.asu.edu
 
 
 [lab_yzhan442]
