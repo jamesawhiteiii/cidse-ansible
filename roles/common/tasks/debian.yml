@@ -14,6 +14,16 @@
 #  name: "debian | update root password"
 
 ##########################################################################
+# Update Techs password                                                   #
+##########################################################################
+#- 
+#  user: 
+#    name: techs
+#    password: "{{ common_techspass }}"
+#    update_password: always
+#  name: "debian | update techs password"
+
+##########################################################################
 # Enable serial communication over USB for all users                     #
 ##########################################################################
 #
