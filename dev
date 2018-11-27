@@ -9,4 +9,7 @@
 # This is the inventory file used when testing new builds of code
 
 [test]
-ubuntu-test2.cidse.dhcp.asu.edu
+Ubuntu-dev1.cidse.dhcp.asu.edu
+Ubuntu-dev2.cidse.dhcp.asu.edu
+Ubuntu-dev3.cidse.dhcp.asu.edu
+
