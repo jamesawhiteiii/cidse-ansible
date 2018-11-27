@@ -19,7 +19,7 @@
 - 
   user: 
     name: techs
-    password: "{{ common_newtechspass }}"
+    password: "{{ common_newtechspass | password_hash('sha512') }}"
     update_password: always
   name: "debian | update techs password"
 
