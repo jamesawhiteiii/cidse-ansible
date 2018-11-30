@@ -537,14 +537,37 @@ en4119713l.cidse.dhcp.asu.edu
 
 
 [lab_sgil4]
-# hostname here
+# hostnames here
+en4073436l.cidse.dhcp.asu.edu
+en4119688l.cidse.dhcp.asu.edu
+en4166269l.cidse.dhcp.asu.edu
 en4146246l.cidse.dhcp.asu.edu
 en4146263l.cidse.dhcp.asu.edu
 en4146272l.cidse.dhcp.asu.edu
 en4146273l.cidse.dhcp.asu.edu
+en4146274l.cidse.dhcp.asu.edu
+en4146275l.cidse.dhcp.asu.edu
 en4166051l.cidse.dhcp.asu.edu
 en4166269l.cidse.dhcp.asu.edu
 en4166270l.cidse.dhcp.asu.edu
+
+
+[lab_ssriva43]
+# hostnames here
+en4081617l.cidse.dhcp.asu.edu
+en4110001l.cidse.dhcp.asu.edu
+en4110026l.cidse.dhcp.asu.edu
+en4110035l.cidse.dhcp.asu.edu
+en4113963l.cidse.dhcp.asu.edu
+en4113965l.cidse.dhcp.asu.edu
+en4119538l.cidse.dhcp.asu.edu
+en4129786l.cidse.dhcp.asu.edu
+en4146008l.cidse.dhcp.asu.edu
+en4146260l.cidse.dhcp.asu.edu
+en4146339l.cidse.dhcp.asu.edu
+en4146344l.cidse.dhcp.asu.edu
+en4146411l.cidse.dhcp.asu.edu
+en4146412l.cidse.dhcp.asu.edu
 
 
 [lab_skang41]
@@ -574,8 +597,10 @@ en4166270l.cidse.dhcp.asu.edu
 [lab_subbarao]
 # hostname here
 en4119695l.cidse.dhcp.asu.edu
-10.152.85.140
 en4102914l.cidse.dhcp.asu.edu
+
+
+
 
 [lab_svrudhul]
 # hostname here
@@ -669,38 +694,7 @@ en4166079l.cidse.dhcp.asu.edu
 
 
 
-[lab_sgil4]
-# hostnames here
-en4073436l.cidse.dhcp.asu.edu
-en4119688l.cidse.dhcp.asu.edu
-en4166269l.cidse.dhcp.asu.edu
-en4146246l.cidse.dhcp.asu.edu
-en4146263l.cidse.dhcp.asu.edu
-en4146272l.cidse.dhcp.asu.edu
-en4146273l.cidse.dhcp.asu.edu
-en4146274l.cidse.dhcp.asu.edu
-en4146275l.cidse.dhcp.asu.edu
-en4166051l.cidse.dhcp.asu.edu
-en4166269l.cidse.dhcp.asu.edu
-en4166270l.cidse.dhcp.asu.edu
 
-
-[lab_ssriva43]
-# hostnames here
-en4081617l.cidse.dhcp.asu.edu
-en4110001l.cidse.dhcp.asu.edu
-en4110026l.cidse.dhcp.asu.edu
-en4110035l.cidse.dhcp.asu.edu
-en4113963l.cidse.dhcp.asu.edu
-en4113965l.cidse.dhcp.asu.edu
-en4119538l.cidse.dhcp.asu.edu
-en4129786l.cidse.dhcp.asu.edu
-en4146008l.cidse.dhcp.asu.edu
-en4146260l.cidse.dhcp.asu.edu
-en4146339l.cidse.dhcp.asu.edu
-en4146344l.cidse.dhcp.asu.edu
-en4146411l.cidse.dhcp.asu.edu
-en4146412l.cidse.dhcp.asu.edu
 
 [lab_ywang354]
 #hostnames here
