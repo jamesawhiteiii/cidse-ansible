@@ -3,4 +3,4 @@
 # The name of this file must match exactly with the name of the group in the Ansible inventory file
 joindomain_sudogroups:
   - "cidse-it"
-  - "CIDSE-adoupe1_Lab_Admins"
+  - "CIDSE-ckcheng_Lab_Admins"
