@@ -31,3 +31,5 @@
 - name: cidse | landscape
   import_playbook: landscape.yml
 
+- name: cidse | cidse-printers
+  import_playbook: printers.yml
