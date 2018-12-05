@@ -77,7 +77,6 @@ cidse-utility.fulton.ad.asu.edu
 
 [servers_shared]
 # hostnames here
-
 [servers_jingruih]
 en4166073l.fulton.ad.asu.edu
 
@@ -110,12 +109,19 @@ en4119510l.cidse.dhcp.asu.edu
 
 [lab_adoupe1]
 # hostnames here
+en4119301l.cidse.dhcp.asu.edu
 en4146147l.cidse.dhcp.asu.edu
 en4146148l.cidse.dhcp.asu.edu
 en4146149l.cidse.dhcp.asu.edu
 en4146150l.cidse.dhcp.asu.edu
 en4146152l.cidse.dhcp.asu.edu
-en4119301l.cidse.dhcp.asu.edu
+
+
+
+[lab_agaffar]
+# hostname here
+
+
 
 [lab_agel1]
 # hostname here
@@ -131,6 +137,9 @@ en4119301l.cidse.dhcp.asu.edu
 
 [lab_ashriva6]
 # hostname here
+en4079729l.cidse.dhcp.asu.edu
+
+
 
 [lab_atdcm]
 # hostname here
@@ -138,9 +147,18 @@ en4119301l.cidse.dhcp.asu.edu
 
 [lab_bazzi]
 # hostname here
+en4138059l.cidse.dhcp.asu.edu
+
 
 [lab_bli24]
 # hostname here
+en4113745l.cidse.dhcp.asu.edu
+en4113774l.cidse.dhcp.asu.edu
+en4113855l.cidse.dhcp.asu.edu
+en4113856l.cidse.dhcp.asu.edu
+en4119468l.cidse.dhcp.asu.edu
+en4119559l.cidse.dhcp.asu.edu
+en4119756l.cidse.dhcp.asu.edu
 
 
 [lab_bnelson]
@@ -156,22 +174,23 @@ en4119301l.cidse.dhcp.asu.edu
 
 [lab_candan]
 # hostname here
-
-
+en4066167L.cidse.dhcp.asu.edu
+en4073438L.cidse.dhcp.asu.edu
+en4119625L.cidse.dhcp.asu.edu
 
 
 [lab_caroleje]
 # hostname here
-
-
-
+en4109559l.cidse.dhcp.asu.edu
 
 
 [lab_cbaral]
 # hostname here
-
-
-
+en4046086l.cidse.dhcp.asu.edu
+en4067803l.cidse.dhcp.asu.edu
+en4067808l.cidse.dhcp.asu.edu
+en4079604l.cidse.dhcp.asu.edu
+en4119421l.cidse.dhcp.asu.edu
 
 
 
@@ -211,7 +230,9 @@ en4119301l.cidse.dhcp.asu.edu
 
 [lab_dboscovi]
 # hostname here
-
+en4081447l.cidse.dhcp.asu.edu
+en4081624l.cidse.dhcp.asu.edu
+en4081645l.cidse.dhcp.asu.edu
 
 
 [lab_dcalliss]
@@ -221,7 +242,7 @@ en4119301l.cidse.dhcp.asu.edu
 
 [lab_dhuang8]
 # hostname here
-
+en4146357l.cidse.dhcp.asu.edu
 
 
 
@@ -262,9 +283,11 @@ en4119301l.cidse.dhcp.asu.edu
 
 [lab_gahn1]
 # hostname here
+en4058634l.cidse.dhcp.asu.edu
+en4113746l.cidse.dhcp.asu.edu
 en4119298l.cidse.dhcp.asu.edu
-#IP Address just in case :)
-10.218.104.207
+en4119412l.cidse.dhcp.asu.edu
+en4129777l.cidse.dhcp.asu.edu
 
 
 
@@ -293,6 +316,8 @@ en4119298l.cidse.dhcp.asu.edu
 
 [lab_hbenamor]
 # hostname here
+en4119351l.cidse.dhcp.asu.edu
+en4146387l.cidse.dhcp.asu.edu
 
 
 [lab_hdavulcu]
