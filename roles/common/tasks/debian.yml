@@ -4,14 +4,23 @@
 ############################################################################################
 
 ##########################################################################
-# Update root password                                                   #
+# Disable root password                                                   #
 ##########################################################################
-#- 
-#  user: 
-#    name: root
-#    password: "{{ common_rtpass }}"
-#    update_password: always
-#  name: "debian | update root password"
+- 
+  user: 
+    name: root
+    shell: /sbin/nologin
+  name: debian | Disable Root Account Login 
+
+##########################################################################
+# Update Techs password                                                   #
+##########################################################################
+- 
+  user: 
+    name: techs
+    password: "{{ common_newtechspass | password_hash('sha512') }}"
+    update_password: always
+  name: "debian | update techs password"
 
 ##########################################################################
 # Enable serial communication over USB for all users                     #
