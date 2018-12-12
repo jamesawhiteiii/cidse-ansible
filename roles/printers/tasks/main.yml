@@ -2,7 +2,7 @@
 
 - name: Creating {{ cups_ppd_shared_location }}
   file:
-    path: "{{cups_ppd_shared_location}}"
+    path: "{{ cups_ppd_shared_location }}"
     recurse: yes
     state: directory
 
@@ -11,13 +11,15 @@
  
 - name: Copy PPDs in the ppds_to_be_copied folder
   copy:
-    src: "{{cups_ppd_files_to_be_copied}}/"
-    dest: "{{cups_ppd_shared_location}}/"
+    src: "{{ item }}"
+    dest: "{{ cups_ppd_shared_location }}"
     owner: root
     group: root
     mode: 0644
   when: cups_ppd_files_to_be_copied|default("") != ""
-
+  with_items:
+   - "{{ cups_ppd_files_to_be_copied }}"
+   
 - name: Enable the cups service
   service: name=cups enabled=yes
 
