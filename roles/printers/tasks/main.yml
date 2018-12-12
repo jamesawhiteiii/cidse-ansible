@@ -1,20 +1,45 @@
 ---
-- block:
-    - name: Include - Pre-Install steps
-      include: cups_pre_install.yml
 
-    - name: Include - Install CUPS
-      include: cups_install.yml
+- name: Creating {{ cups_ppd_shared_location }}
+  file:
+    path: "{{cups_ppd_shared_location}}"
+    recurse: yes
+    state: directory
 
-    - name: Include - Configure CUPS
-      include: cups_configure.yml
+- name: Install CUPS
+  apt: name=cups state=latest
+ 
+- name: Copy PPDs in the ppds_to_be_copied folder
+  copy:
+    src: "{{cups_ppd_files_to_be_copied}}/"
+    dest: "{{cups_ppd_shared_location}}/"
+    owner: root
+    group: root
+    mode: 0644
+  when: cups_ppd_files_to_be_copied|default("") != ""
 
-    - name: Include - Install PPDs.
-      include: ppd_install.yml
+- name: Enable the cups service
+  service: name=cups enabled=yes
 
-    - name: Include - Uninstall any defined printers and install any printers and classes defined.
-      include: printer_and_class_install.yml
+- name: Ensure cups is running
+  service: name=cups state=started
+  
+- name: Make FSE Directory
+  file:
+    path: /var/log/fse/
+    state: directory
+    mode: 0755
+    
+- name: Map printers using lpadmin
+  shell: "lpadmin -p {{ item.name }} -v socket://{{ item.socket }} -P {{ item.ppd }}"
+  args: 
+    creates: /var/log/fse/{{ item.name }}.installed
+  with_items:
+   - "{{ printer_list }}"
 
-  always:
-    - name: Include - CUPS Cleanup
-      include: cups_cleanup.yml
+- name: Enable and accepting printer
+  shell: "cupsenable {{ item.name }} && cupsaccept {{ item.name }}"
+  args: 
+    creates: /var/log/fse/{{ item.name }}.enabled
+  with_items:
+   - "{{ printer_list }}"
