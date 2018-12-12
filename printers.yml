@@ -5,7 +5,7 @@
 - 
   become: true		      # Sudo all commands in the playbook
   hosts: all    		    # Defines what computers this is being run on
-  name: cidse-printers          # Name of the playbook
+  name: printers          # Name of the playbook
 # remote_user: techs    # Not defined here as it is defined in ansible.cfg
 
 ############################################################################################
@@ -13,5 +13,5 @@
 ############################################################################################  
   
   roles:
-    - cidse-printers
+    - printers
     
