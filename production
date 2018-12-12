@@ -77,7 +77,6 @@ cidse-utility.fulton.ad.asu.edu
 
 [servers_shared]
 # hostnames here
-
 [servers_jingruih]
 en4166073l.fulton.ad.asu.edu
 
@@ -110,10 +109,12 @@ en4119510l.cidse.dhcp.asu.edu
 
 [lab_adoupe1]
 # hostnames here
+en4119301l.cidse.dhcp.asu.edu
+en4146147l.cidse.dhcp.asu.edu
+en4146148l.cidse.dhcp.asu.edu
 en4146149l.cidse.dhcp.asu.edu
 en4146150l.cidse.dhcp.asu.edu
-en4146151lvm.cidse.dhcp.asu.edu
-
+en4146152l.cidse.dhcp.asu.edu
 
 
 
@@ -137,7 +138,6 @@ en4146151lvm.cidse.dhcp.asu.edu
 [lab_ashriva6]
 # hostname here
 en4079729l.cidse.dhcp.asu.edu
-en4081617l.cidse.dhcp.asu.edu
 
 
 
@@ -287,10 +287,7 @@ en4058634l.cidse.dhcp.asu.edu
 en4113746l.cidse.dhcp.asu.edu
 en4119298l.cidse.dhcp.asu.edu
 en4119412l.cidse.dhcp.asu.edu
-en4146147l.cidse.dhcp.asu.edu
-en4146148l.cidse.dhcp.asu.edu
-en4146149l.cidse.dhcp.asu.edu
-en4146152l.cidse.dhcp.asu.edu
+en4129777l.cidse.dhcp.asu.edu
 
 
 
@@ -348,10 +345,8 @@ en4119614l.cidse.dhcp.asu.edu
 
 [lab_huanliu]
 # hostname here
-en4073322l.cidse.dhcp.asu.edu
 en4081588l.cidse.dhcp.asu.edu
-en4081623l.cidse.dhcp.asu.edu
-enen4098638l.cidse.dhcp.asu.edu
+en4098638l.cidse.dhcp.asu.edu
 en4098642l.cidse.dhcp.asu.edu
 en4102931l.cidse.dhcp.asu.edu
 
@@ -497,8 +492,6 @@ en4119713l.cidse.dhcp.asu.edu
 
 [lab_mzhao38]
 # hostname here
-en4129777l.cidse.dhcp.asu.edu
-
 
 [lab_navabi]
 # hostname here
@@ -623,7 +616,8 @@ en4146412l.cidse.dhcp.asu.edu
 
 [lab_ssyau]
 # hostname here
-
+en4146345l.cidse.dhcp.asu.edu
+en4085049l.cidse.dhcp.asu.edu
 
 
 [lab_subbarao]
@@ -722,7 +716,7 @@ en4166079l.cidse.dhcp.asu.edu
 
 [lab_zzhao30]
 # hostname here
-
+en4119642l.cidse.dhcp.asu.edu
 
 
 
