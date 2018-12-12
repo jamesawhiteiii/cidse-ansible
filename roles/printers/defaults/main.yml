@@ -3,34 +3,34 @@
 # DEFAULT VARIABLES FOR COMMON ROLE                                                        #
 ############################################################################################
 
-- cups_ppd_shared_location: /usr/share/cups/model/
+cups_ppd_shared_location: /usr/share/cups/model/
 
-- cups_ppd_files_to_be_copied:
-    - Dell_B5460dn_Laser_Printer.ppd
-    - Dell_B5465dnf_Laser_MFP.ppd
+cups_ppd_files_to_be_copied:
+  - Dell_B5460dn_Laser_Printer.ppd
+  - Dell_B5465dnf_Laser_MFP.ppd
 
-- printer_list:
-   - name: BYENG_M1-40
-     socket: 10.218.104.31:9100/BYENG_M1-40
-     ppd: /usr/share/cups/model/Dell_B5460dn_Laser_Printer.ppd
-   - name: BYENG_312
-     socket: 10.218.104.32:9100/BYENG_312
-     ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
-   - name: BYENG_4SW
-     socket: 10.218.104.33:9100/BYENG_4SW
-     ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
-   - name: BYENG_4N
-     socket: 10.218.104.34:9100/BYENG_4N
-     ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
-   - name: BYENG_4SE
-     socket: 10.218.104.35:9100/BYENG_4SE 
-     ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
-   - name: BYENG_5W
-     socket: 10.218.104.36:9100/BYENG_5W
-     ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
-   - name: BYENG_5E
-     socket: 10.218.104.37:9100/BYENG_5E
-     ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd 
+printer_list:
+  - name: BYENG_M1-40
+    socket: 10.218.104.31:9100/BYENG_M1-40
+    ppd: /usr/share/cups/model/Dell_B5460dn_Laser_Printer.ppd
+  - name: BYENG_312
+    socket: 10.218.104.32:9100/BYENG_312
+    ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
+  - name: BYENG_4SW
+    socket: 10.218.104.33:9100/BYENG_4SW
+    ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
+  - name: BYENG_4N
+    socket: 10.218.104.34:9100/BYENG_4N
+    ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
+  - name: BYENG_4SE
+    socket: 10.218.104.35:9100/BYENG_4SE 
+    ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
+  - name: BYENG_5W
+    socket: 10.218.104.36:9100/BYENG_5W
+    ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd
+  - name: BYENG_5E
+    socket: 10.218.104.37:9100/BYENG_5E
+    ppd: /usr/share/cups/model/Dell_B5465dnf_Laser_MFP.ppd 
         
 
 
