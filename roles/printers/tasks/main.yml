@@ -10,7 +10,7 @@
   apt: name=cups state=latest
  
 - name: Copy PPDs in the ppds_to_be_copied folder
-    src: "{{ role_dir }}/files/{{ item }}"
+    src: "{{ roles_dir }}/files/{{ item }}"
     dest: "{{ cups_ppd_shared_location }}"
     owner: root
     group: root
