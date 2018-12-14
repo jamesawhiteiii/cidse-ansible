@@ -8,7 +8,7 @@
 
 - name: Install CUPS
   apt: name=cups state=latest
- - name: Copy PPDs in the ppds_to_be_copied folder
+- name: Copy PPDs in the ppds_to_be_copied folder
     copy:
     src: "{{ item }}"
     src: "{{ role_dir }}/files/{{ item }}"
