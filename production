@@ -513,6 +513,7 @@ en4119713l.cidse.dhcp.asu.edu
 # hostname here
 en4129780l.cidse.dhcp.asu.edu
 
+
 [lab_rafleisc]
 # hostname here
 
@@ -717,6 +718,7 @@ en4166079l.cidse.dhcp.asu.edu
 [lab_zzhao30]
 # hostname here
 en4119642l.cidse.dhcp.asu.edu
+10.218.107.199
 
 
 
