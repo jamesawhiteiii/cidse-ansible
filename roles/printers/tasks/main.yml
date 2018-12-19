@@ -43,14 +43,14 @@
     mode: 0755
     
 - name: Map printers using lpadmin
-  shell: "lpadmin -p {{ item.name }} -v socket://{{ item.socket }} -P {{ item.ppd }}"
+  shell: "lpadmin -p {{ item.name }} -v socket://{{ item.socket }} -P {{ item.ppd }} && touch /var/log/fse/{{ item.name }}.installed"
   args: 
     creates: /var/log/fse/{{ item.name }}.installed
   with_items:
    - "{{ printer_list }}"
 
 - name: Enable and accepting printer
-  shell: "cupsenable {{ item.name }} && cupsaccept {{ item.name }}"
+  shell: "cupsenable {{ item.name }} && cupsaccept {{ item.name }} && touch /var/log/fse/{{ item.name }}.enabled"
   args: 
     creates: "/var/log/fse/{{ item.name }}.enabled"
   with_items:
