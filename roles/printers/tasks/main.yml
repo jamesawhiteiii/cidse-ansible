@@ -52,6 +52,6 @@
 - name: Enable and accepting printer
   shell: "cupsenable {{ item.name }} && cupsaccept {{ item.name }}"
   args: 
-    creates: /var/log/fse/{{ item.name }}.enabled
+    creates: "/var/log/fse/{{ item.name }}.enabled"
   with_items:
    - "{{ printer_list }}"
