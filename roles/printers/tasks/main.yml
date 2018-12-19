@@ -13,7 +13,7 @@
   
 - name: Copy PPDs in the ppds_to_be_copied folder
   copy:
-    src: "{{ role_dir }}/files/{{ item }}"
+    src: "{{ role_path }}/files/{{ item }}"
     dest: "{{ cups_ppd_shared_location }}"
     owner: root
     group: root
