@@ -59,6 +59,8 @@ ARA:
     Used only for the setup of the cidse-ansible machine
 
 Common:
+   Disable Root Account
+   Change Techs account password
    Enables serial over USB for all users
    Adds repos
         Chrome
@@ -92,6 +94,10 @@ Join-Domain:
 Service-Acct:
     Sets up a local use account with admin permissions to only be used by Ansible
     The user and pass are vaulted in a group_vars file
+    
+Printers:
+    Sets up all CIDSE Common printers, and enables cups. 
+
 ```
 	
 
@@ -104,10 +110,6 @@ production                # inventory file for production machines
 staging                   # inventory file for staging or testing
 
 ansible.cfg               # specifies ansible configuration (takes precendence over the file in /etc/ansible)
-
-vault_credentials.txt        # Ignored by Git, create this file and specify the Ansible Vault password
-ssh_service_credentials.txt  # Ignored by Git, create this file and specify the SSH service user and password for Ansible
-ssh_techs_credentials.txt    # Ignored by Git, create this file and specift the techs account password (Used to provision service account)
 
 group_vars/
    group1                 # here we assign variables to particular groups of machines as defined in inventory
