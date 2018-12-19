@@ -7,7 +7,9 @@
     state: directory
 
 - name: Install CUPS
-  apt: name=cups state=latest
+  apt: 
+    name: cups 
+    state: latest
   
 - name: Copy PPDs in the ppds_to_be_copied folder
   copy:
