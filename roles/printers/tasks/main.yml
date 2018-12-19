@@ -10,7 +10,15 @@
   apt: 
     name: cups 
     state: latest
-  
+
+- name: Copy Fax Filter
+  copy:
+    src: "{{ role_path }}/files/fax-pnh-filter"
+    dest: /usr/lib/cups/filter/fax-pnh-filter
+    owner: root
+    group: root
+    mode: 0644
+    
 - name: Copy PPDs in the ppds_to_be_copied folder
   copy:
     src: "{{ role_path }}/files/{{ item }}"
