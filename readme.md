@@ -23,6 +23,7 @@ The syntax for a playbook command is:
 ```
 
 Useful options to be aware of:
+```
 | Option           | Use                                                                          |
 |------------------|------------------------------------------------------------------------------|
 | --ask-vault-pass | Prompts you for the vault password when running a command                    |
@@ -31,6 +32,7 @@ Useful options to be aware of:
 | -k               | Prompts you for SSH password                                                 |
 | -K               | Prompts you for sudo/become password                                         |
 | -u               | Allows you to specify the SSH username                                       |
+```
 
 As a quick note: Ansible uses 'become' in place of the word 'sudo'. Direct sudo usage in Ansible is deprecated. You should always use 'become' and remember it works exactly as 'sudo' would.
 
