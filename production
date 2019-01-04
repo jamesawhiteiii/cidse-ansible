@@ -737,6 +737,11 @@ en4146399l.cidse.dhcp.asu.edu
 #hostnames here
 en4119387l.cidse.dhcp.asu.edu
 
+[lab_CIDSEIT]
+#CIDSE IT systems used to test production config
+#hostnames here
+en4090392l.cidse.dhcp.asu.edu
+
 
 
 ####################################################
@@ -756,3 +761,4 @@ en4119387l.cidse.dhcp.asu.edu
 
 [staff_cidseit]
 en4061283l.cidse.dhcp.asu.edu
+
