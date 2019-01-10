@@ -88,7 +88,7 @@ en4119509l.cidse.dhcp.asu.edu
 en4119510l.cidse.dhcp.asu.edu
 
 ####################################################
-# 3.1 workstaions_labs | Groups & Hostnames        #
+# 3.1 workstations_labs | Groups & Hostnames        #
 ####################################################
 # When adding a group here ensure it is added to 
 # EXAMPLE
@@ -406,15 +406,6 @@ en4102931l.cidse.dhcp.asu.edu
 # hostname here
 
 
-
-
-[lab_jrande32]
-# hostnames here
-ubuntu-test2.cidse.dhcp.asu.edu
-
-
-
-
 [lab_jsefair]
 # hostname here
 
@@ -637,11 +628,9 @@ en4119721l.cidse.dhcp.asu.edu
 [lab_syrotiuk]
 # hostname here
 en4098711l.cidse.dhcp.asu.edu
-10.218.108.80
 en4098717l.cidse.dhcp.asu.edu
-10.218.108.232
 en4098718l.cidse.dhcp.asu.edu
-10.218.105.147
+
 
 
 [lab_tbao5]
@@ -723,7 +712,7 @@ en4166079l.cidse.dhcp.asu.edu
 [lab_zzhao30]
 # hostname here
 en4119642l.cidse.dhcp.asu.edu
-10.218.107.199
+
 
 
 
