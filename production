@@ -637,10 +637,10 @@ en4129777l.cidse.dhcp.asu.edu
 en4119351l.cidse.dhcp.asu.edu
 
 en4146387l.cidse.dhcp.asu.edu
-
-
-
-
+EN4166249L.cidse.dhcp.asu.edu
+EN4166246L.cidse.dhcp.asu.edu
+EN4166247L.cidse.dhcp.asu.edu
+EN4166248L.cidse.dhcp.asu.edu
 
 [lab_hdavulcu]
 
@@ -1403,8 +1403,8 @@ en4098718l.cidse.dhcp.asu.edu
 [lab_ylee1]
 
 # hostname here
-
-
+en4098662l.cidse.dhcp.asu.edu
+EN4098653LVM.cidse.dhcp.asu.edu
 
 
 
