@@ -14,7 +14,8 @@
 
 # By default group of 'all' already exists
 
-# Always use fully qualifed hostnames
+# Always use fully qualifed hostnames e.g. en1234567l.cidse.dhcp.asu.edu
+
 
 
 
