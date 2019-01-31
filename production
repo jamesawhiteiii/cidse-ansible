@@ -455,11 +455,6 @@ en4119421l.cidse.dhcp.asu.edu
 
 
 
-[lab_davulcu]
-
-# hostname here
-
-en4109571l.cidse.dhcp.asu.edu
 
 
 [lab_dboscovi]
@@ -651,7 +646,7 @@ EN4166248L.cidse.dhcp.asu.edu
 # hostname here
 
 en4119614l.cidse.dhcp.asu.edu
-
+en4109571l.cidse.dhcp.asu.edu
 
 
 
